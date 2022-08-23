@@ -13,6 +13,10 @@ Document version:
 
    This project is under active development.
 
+You can get the complete source-code from GitHub:
+
+`GitHub <https://github.com/rpietsch1953/Argpass>`_
+
 .. toctree::
    usage
    api
