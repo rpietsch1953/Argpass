@@ -5,6 +5,10 @@ Deals with command-line parameters
 
 Copyright (c) 2022 Ing. Rainer Pietsch <r.pietsch@pcs-at.com>
 
+Detailed docs at <https://argpass.readthedocs.io/en/latest/index.html>
+
+Source at <https://github.com/rpietsch1953/Argpass>
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
 published by the Free Software Foundation, version 3.
@@ -41,7 +45,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '257.220823174107'
+__updated__ = '262.220823180744'
 Version = f"1.12.{__updated__}"
 
 GLOBAL_NAME = 'global'

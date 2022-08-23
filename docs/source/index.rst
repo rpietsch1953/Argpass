@@ -13,7 +13,18 @@ Document version:
 
    This project is under active development.
 
-You can get the complete source-code from `GitHub repository <https://github.com/rpietsch1953/Argpass>`_
+Source
+------
+
+   You can get the complete source-code from `GitHub repository <https://github.com/rpietsch1953/Argpass>`_
+
+Detailed documentation
+----------------------
+
+   The detailed documentation is on `Read the Docs <https://argpass.readthedocs.io/en/latest/index.html>`_
+
+Table of contents  
+-----------------
 
 .. toctree::
    usage
