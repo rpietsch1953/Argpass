@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 # vim: expandtab:ts=4:sw=4:noai
-
+"""Example 3"""
 
 import sys
-from pcs_argpass.Param import Param
-from pcs_argpass.GPL3 import GPL3_2007, GPL_Preamble, LGPL3_2007
 from Ex3_Args import Def_Main, Child_Def
+from pcs_argpass.Param import Param
+from pcs_argpass.GPL3 import GPL3_2007, GPL_Preamble
+
 
 MyParam:Param = None              # to produce an error if not initialized!
 Version = "1.0.0"
 
 def main():
-
-    # do your work here.
+    """ Do your work here """
     print(MyParam.ParamStr())       # only to do something
-    
+
     AddPar = MyParam.Child['add']   # you can get a sub-part of your definitions
     for key,value in AddPar.items():
         print(f"{key} -> {value}")
@@ -36,4 +36,3 @@ if __name__ == '__main__':
         print(f"{RunExc }",file=sys.stderr)
         sys.exit(1)
     sys.exit(0)
-

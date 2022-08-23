@@ -41,7 +41,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '255.220823091057'
+__updated__ = '256.220823142906'
 Version = f"1.12.{__updated__}"
 
 GLOBAL_NAME = 'global'
@@ -486,13 +486,13 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :param ShowPrefixOnHelp: if True a header block in the form
 
             .. code-block:: text
-                
+
                 ------------------------------------------------------------
                 <child-name>
                 ------------------------------------------------------------
 
         is printed within the help-output to divide child help from each other
-        
+
         :type ShowPrefixOnHelp: bool, optional
         :param _Child: True if this instance should be a child, defaults to False
         :type _Child: bool, optional
@@ -748,8 +748,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         There are 2 'Hidden' function to help debug the translations:
 
             :func:`_PrintInitTranslation` and
-            
-            :func:`_PrintAktualTranslation` 
+
+            :func:`_PrintAktualTranslation`
 
         Theses functions do exactly what they say: print the values out to stdout. You can
         use them to get the exact values used. The following default may not be accurate

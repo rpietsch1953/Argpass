@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # vim: expandtab:ts=4:sw=4:noai
-
+"""Example 2 Args"""
 Def_LogMqtt = {
     'Help':
         {

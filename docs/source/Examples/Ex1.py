@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # vim: expandtab:ts=4:sw=4:noai
-
+"""Example 1"""
 import sys
-from pcs_argpass.Param import Param, Translation_de_DE
+from pcs_argpass.Param import Param #, Translation_de_DE
 from pcs_argpass.GPL3 import LGPL_Preamble_DE, GPL3_2007, LGPL_Preamble, LGPL3_2007
 
 MyParam:Param = None              # to produce an error if not initialized!
