@@ -45,7 +45,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '266.220828124039'
+__updated__ = '267.220828162000'
 Version = f"1.12.{__updated__}"
 
 GLOBAL_NAME = 'global'
