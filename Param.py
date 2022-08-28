@@ -45,7 +45,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '262.220823180744'
+__updated__ = '266.220828124039'
 Version = f"1.12.{__updated__}"
 
 GLOBAL_NAME = 'global'
@@ -264,8 +264,10 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         def default(self, o):
             """The "real" encoder
 
-            Args:
-                obj (any): the object to encode
+            :param o: the object to encode
+            :type o: obj (any)
+            :return: the encoded object
+            :rtype: str
 
             Returns:
                 any: the encoded Path or the default result
