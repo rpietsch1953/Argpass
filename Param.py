@@ -17,8 +17,6 @@ This program is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
-
-
 """
 
 import copy
@@ -29,10 +27,10 @@ import pprint
 import sys
 import textwrap
 import types
+from importlib import import_module
 from itertools import chain
 from pathlib import Path, PurePath
-from typing import Dict, Union, Optional
-from importlib import import_module
+from typing import Dict, Optional, Union
 
 # Use json5 for imports if it is avallable
 # else use json (json5 allowes comments within the json-data)
@@ -47,12 +45,12 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '272.220829151440'
-Version = f"1.12.{__updated__}"
+__updated__ = '275.220829152350'
+Version = f"1.13.{__updated__}"
 
 GLOBAL_NAME = 'global'
 
-GPL_Preamble = """
+GPL_Preamble:str = """
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -65,7 +63,7 @@ GNU General Public License for more details.
 
 """
 
-GPL_Preamble_DE = """
+GPL_Preamble_DE:str = """
 Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
 der GNU General Public License, wie von der Free Software Foundation,
 Version 3 der Lizenz oder jeder neueren veröffentlichten Version,
@@ -78,7 +76,7 @@ Siehe die GNU General Public License für weitere Einzelheiten.
 
 """
 
-GPL3_2007 = """
+GPL3_2007:str = """
                     GNU GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
@@ -701,7 +699,7 @@ copy of the Program in return for a fee.
 
 """
 
-LGPL_Preamble = """
+LGPL_Preamble:str = """
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
 by the Free Software Foundation, either version 3 of the License, or
@@ -714,7 +712,7 @@ GNU General Public License for more details.
 
 """
 
-LGPL_Preamble_DE = """
+LGPL_Preamble_DE:str = """
 Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
 der GNU Lesser General Public License, wie von der Free Software
 Foundation, Version 3 der Lizenz oder jeder neueren veröffentlichten
@@ -727,7 +725,7 @@ Siehe die GNU General Public License für weitere Einzelheiten.
 
 """
 
-LGPL3_2007 = """
+LGPL3_2007:str = """
                   GNU LESSER GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
