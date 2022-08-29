@@ -33,19 +33,22 @@ import types
 from itertools import chain
 from pathlib import Path, PurePath
 from typing import Dict, Union, Optional
+from importlib import import_module
 
 # Use json5 for imports if it is avallable
 # else use json (json5 allowes comments within the json-data)
 # data is ALLWAYS printed as pure json.
+
 try:
-    import json5
+    # import json5
+    globals()['json5'] = import_module('json5')
     JsonLoads = json5.loads
     JsonLoad = json5.load
 except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '268.220829142221'
+__updated__ = '269.220829144931'
 Version = f"1.12.{__updated__}"
 
 GLOBAL_NAME = 'global'

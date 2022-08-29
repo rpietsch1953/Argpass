@@ -8,7 +8,7 @@
 
 <div class="version">
 
-1.12.268.220829142221
+1.12.269.220829144931
 
 </div>
 
@@ -50,7 +50,7 @@
 
 # Welcome to pcs\_argpass’s documentation\!
 
-Document version: 1.12.268.220829142221
+Document version: 1.12.269.220829144931
 
 <div class="admonition note">
 
