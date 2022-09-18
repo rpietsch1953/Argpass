@@ -8,7 +8,7 @@
 
 <div class="version">
 
-1.13.275.220829152350
+1.14.302.220918124812
 
 </div>
 
@@ -35,7 +35,7 @@
 <div role="navigation" aria-label="Page navigation">
 
   - [](#) »
-  - pcs\_argpass 1.13 documentation
+  - pcs\_argpass 1.14 documentation
   - 
 
 -----
@@ -50,7 +50,7 @@
 
 # Welcome to pcs\_argpass’s documentation\!
 
-Document version: 1.13.275.220829152350
+Document version: 1.14.302.220918124812
 
 <div class="admonition note">
 
@@ -489,6 +489,115 @@ Public License for more details.
     
     <!-- end list -->
     
+      - <span class="sig-name descname"><span class="pre">IsValidIp</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this Ip (or DNS-name) is a valid IP address (either IPV4
+        or IPV6)
+        
+          - Parameters  
+            **Ip** (*str*) – The IP-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not a valid IP
+            address
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
+      - <span class="sig-name descname"><span class="pre">IsValidIp4</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this Ip (or DNS-name) is a valid IPV4 address
+        
+          - Parameters  
+            **Ip** (*str*) – The IP-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not a valid
+            IPV4 address
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
+      - <span class="sig-name descname"><span class="pre">IsValidIp6</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this Ip (or DNS-name) is a valid IPV6 address
+        
+          - Parameters  
+            **Ip** (*str*) – The IP-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not a valid
+            IPV6 address
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
+      - <span class="sig-name descname"><span class="pre">IsValidLocalIp</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this IPV4 or IPV6 (or DNS-name) is on this computer
+        
+          - Parameters  
+            **Ip** (*str*) – The IP-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not on this
+            computer
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
+      - <span class="sig-name descname"><span class="pre">IsValidLocalIp4</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this Ip (or DNS-name) is on this computer
+        
+          - Parameters  
+            **Ip** (*str*) – The IP-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not on this
+            computer
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
+      - <span class="sig-name descname"><span class="pre">IsValidLocalIp6</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">Ip</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">str</span></span>*<span class="sig-paren">)</span>
+        <span class="sig-return"><span class="sig-return-icon">→</span>
+        <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">\  
+        Test if this IV6 (or DNS-name) is on this computer
+        
+          - Parameters  
+            **Ip** (*str*) – The IPV6-adress or DNS-name
+        
+          - Returns  
+            The (purified) IP or None if this address is not on this
+            computer
+        
+          - Return type  
+            Union\[str, None\]
+    
+    <!-- end list -->
+    
       - *<span class="pre">property</span><span class="w">
         </span>*<span class="sig-name descname"><span class="pre">LongOptsList</span></span>*<span class="p"><span class="pre">:</span></span><span class="w">
         </span><span class="pre">list</span>*  
@@ -552,6 +661,20 @@ Public License for more details.
         
           - Return type  
             str
+    
+    <!-- end list -->
+    
+      - *<span class="pre">property</span><span class="w">
+        </span>*<span class="sig-name descname"><span class="pre">OwnIpAddresses</span></span>*<span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="pre">list</span><span class="p"><span class="pre">\  
+        Return a list of all IP addresses on this computer at this time
+        (either IPV4 or IPV6)
+        
+          - Returns  
+            List of IP-addresses
+        
+          - Return type  
+            list\[str\]
     
     <!-- end list -->
     

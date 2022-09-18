@@ -24,7 +24,6 @@ import inspect
 import json
 import os
 import pprint
-import socket
 import sys
 import textwrap
 import types
@@ -32,8 +31,6 @@ from importlib import import_module
 from itertools import chain
 from pathlib import Path, PurePath
 from typing import Dict, Optional, Union
-
-from netifaces import ifaddresses, interfaces
 
 # Use json5 for imports if it is avallable
 # else use json (json5 allowes comments within the json-data)
@@ -48,8 +45,8 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '302.220918124812'
-Version = f"1.14.{__updated__}"
+__updated__ = '285.220829163941'
+Version = f"1.13.{__updated__}"
 
 GLOBAL_NAME = 'global'
 
@@ -937,18 +934,6 @@ Translation_en_US:dict = {
         "global export",
     'TypeStr':
         "string",
-    'TypeIp':
-        "IP address",
-    'TypeIp4':
-        "IPV4 address",
-    'TypeIp6':
-        "IPV6 address",
-    'TypeLocalIp':
-        "local IP address",
-    'TypeLocalIp4':
-        "local IPV4 address",
-    'TypeLocalIp6':
-        "local IPV6 address",
     'HelpDefault':
         "Default",
     'HelpValue':
@@ -977,10 +962,6 @@ Translation_en_US:dict = {
         "option {OptStr} not recognized",
     'UndefinedOptionMultiple':
         "options {OptStr} not recognized",
-    'InvalidIp':
-        "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
-    'InvalidLocalIp':
-        "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
     }
 
 Translation_de_DE:dict = {
@@ -1034,19 +1015,7 @@ Translation_de_DE:dict = {
         "Global Export",
     'TypeStr':
         "Zeichenkette",
-    'TypeIp':
-        "IP Adresse",
-    'TypeIp4':
-        "IPV4 Adresse",
-    'TypeIp6':
-        "IPV6 Adresse",
-    'TypeLocalIp':
-        "locale IP Adresse",
-    'TypeLocalIp4':
-        "locale IPV4 Adresse",
-    'TypeLocalIp6':
-        "locale IPV6 Adresse",
-'HelpDefault':
+    'HelpDefault':
         "Standardwert",
     'HelpValue':
         "Wert",
@@ -1074,10 +1043,6 @@ Translation_de_DE:dict = {
         "Unbekannte Option {OptStr} angegeben",
     'UndefinedOptionMultiple':
         "Unbekannte Optionen {OptStr} angegeben",
-    'InvalidIp':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige IP{IpVers} Adresse",
-    'InvalidLocalIp':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige, lokale IP{IpVers} Adresse auf diesem Computer",
     }
 
 class Param():
@@ -1195,18 +1160,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 "global export",
             'TypeStr':
                 "string",
-            'TypeIp':
-                "IP address",
-            'TypeIp4':
-                "IPV4 address",
-            'TypeIp6':
-                "IPV6 address",
-            'TypeLocalIp':
-                "local IP address",
-            'TypeLocalIp4':
-                "local IPV4 address",
-            'TypeLocalIp6':
-                "local IPV6 address",
             'HelpDefault':
                 "Default",
             'HelpValue':
@@ -1235,10 +1188,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 "option {OptStr} not recognized",
             'UndefinedOptionMultiple':
                 "options {OptStr} not recognized",
-            'InvalidIp':
-                "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
-            'InvalidLocalIp':
-                "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
         }
 
 
@@ -1529,13 +1478,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             'glob_import':  '<',
             'glob_export':  '>',
             'license':      '§',
-            'fullLicense':  'L',
-            'ip4':          'ip4',
-            'ip6':          'ip6',
-            'ip':           'ip',
-            'lip4':         'lip4',
-            'lip6':         'lip6',
-            'lip':          'lip',
+            'fullLicense':  'L'
             }
         # Liste der nicht einzufügenden Befehle
         self.__SpecialOpts = self.__WorkModes['help']
@@ -1555,15 +1498,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             self.__WorkModes['license']: self.__LicenseList,
             self.__WorkModes['fullLicense']: self.__FullLicenseList,
             }
-
-        self.__IpModes = {
-            self.__WorkModes['ip']: [self.IsValidIp,'InvalidIp','','TypeIp'],
-            self.__WorkModes['ip4']: [self.IsValidIp4,'InvalidIp','V4','TypeIp4'],
-            self.__WorkModes['ip6']: [self.IsValidIp6,'InvalidIp','V6','TypeIp6'],
-            self.__WorkModes['lip']: [self.IsValidLocalIp,'InvalidLocalIp','','TypeLocalIp'],
-            self.__WorkModes['lip4']: [self.IsValidLocalIp4,'InvalidLocalIp','V4','TypeLocalIp4'],
-            self.__WorkModes['lip6']: [self.IsValidLocalIp6,'InvalidLocalIp','V6','TypeLocalIp6'],
-        }
 
 # set the parameters with the individual functions
         self.__UserPars = UserPars
@@ -2000,126 +1934,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 # END Make the class look like a dictionary
 #---------------------------------------------
 #
-    @property
-    def OwnIpAddresses(self) -> list[str]:
-        """
-        Return a list of all IP addresses on this computer
-        at this time (either IPV4 or IPV6)
-
-        :return: List of IP-addresses
-        :rtype: list[str]
-        """
-
-        # The global addresses ar always availlable
-        Res = ['0.0.0.0', '::']
-        for ifaceName in interfaces():                      # All interfaces
-            for ifa in ifaddresses(ifaceName).values():     # All interfaceaddresses
-                for n in ifa:                               # All address-entries
-                    if 'addr' in n:                         # if the addr field is available
-                        try:
-                            ip = self.IsValidIp(n['addr'])       # Test address (and strip all unneccassary parts)
-                            if ip is not None:              # if valid
-                                if ip not in Res:           # not already in list
-                                    Res.append(ip)          # append to list
-                        except ValueError:
-                            pass                            # there are entries that do not match a stream address -> ignore!
-        return Res
-
-
-    def IsValidLocalIp4(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this Ip (or DNS-name) is on this computer
-
-        :param Ip: The IP-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not on this computer
-        :rtype: Union[str, None]
-        """
-        wIp = self.IsValidIp4(Ip)
-        if wIp is None:
-            return None
-        if wIp in self.OwnIpAddresses:
-            return wIp
-        return None
-
-    def IsValidLocalIp6(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this IV6 (or DNS-name) is on this computer
-
-        :param Ip: The IPV6-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not on this computer
-        :rtype: Union[str, None]
-        """
-        wIp = self.IsValidIp6(Ip)
-        if wIp is None:
-            return None
-        if wIp in self.OwnIpAddresses:
-            return wIp
-        return None
-
-    def IsValidLocalIp(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this IPV4 or IPV6 (or DNS-name) is on this computer
-
-        :param Ip: The IP-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not on this computer
-        :rtype: Union[str, None]
-        """
-        wIp = self.IsValidIp(Ip)
-        if wIp is None:
-            return None
-        if wIp in self.OwnIpAddresses:
-            return wIp
-        return None
-
-
-
-    def IsValidIp4(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this Ip (or DNS-name) is a valid IPV4 address
-
-        :param Ip: The IP-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not a valid IPV4 address
-        :rtype: Union[str, None]
-        """
-        try:
-            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET, type=socket.SOCK_STREAM)[0][4][0]          # pylint: disable=unsubscriptable-object
-        except (socket.gaierror, IndexError):
-            return None
-        return wIp
-
-
-    def IsValidIp6(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this Ip (or DNS-name) is a valid IPV6 address
-
-        :param Ip: The IP-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not a valid IPV6 address
-        :rtype: Union[str, None]
-        """
-        try:
-            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET6, type=socket.SOCK_STREAM)[0][4][0]          # pylint: disable=unsubscriptable-object
-        except (socket.gaierror, IndexError):
-            return None
-        return wIp
-
-    def IsValidIp(self,Ip: str) -> Union[str, None]:
-        """
-        Test if this Ip (or DNS-name) is a valid IP address (either IPV4 or IPV6)
-
-        :param Ip: The IP-adress or DNS-name
-        :type Ip: str
-        :return: The (purified) IP or None if this address is not a valid IP address
-        :rtype: Union[str, None]
-        """
-        wIp = self.IsValidIp4(Ip)
-        if wIp is not None:
-            return wIp
-        return self.IsValidIp6(Ip)
 
     @property
     def Child(self) -> Dict[str, object]:
@@ -2772,8 +2586,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             elif ParMode == self.__WorkModes['int']:
                 Ut_Type = self._Translation['TypeInteger']
                 Ut_Default = 0
-            elif ParMode in self.__IpModes:
-                Ut_Type = self._Translation[self.__IpModes[ParMode][3]]
             elif ParMode == self.__WorkModes['bool']:
                 Ut_Type = self._Translation['TypeBool']
                 Ut_Default = False
@@ -2816,15 +2628,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     and wMode != self.__WorkModes['export'] \
                     and wMode != self.__WorkModes['glob_import'] \
                     and wMode != self.__WorkModes['glob_export']:
-                    if wMode in self.__IpModes:
-                        DefVal = SingleDef[self.__WorkPars['default']]
-                        wIp = self.__IpModes[wMode][0](DefVal)
-                        if wIp is None:
-                            raise self.DeclarationError(f"{self.FullPrefix}: {ParName} default value '{DefVal}' is invalid for this type (IP{self.__IpModes[wMode][2]})")
-                        else:
-                            self.__WorkDict[ParName] = wIp
-                    else:    
-                        self.__WorkDict[ParName] = SingleDef[self.__WorkPars['default']]
+                    self.__WorkDict[ParName] = SingleDef[self.__WorkPars['default']]
                 if ParMode == self.__WorkModes['file']:
                     wText = SingleDef[self.__WorkPars['default']]
                     try:
@@ -2862,16 +2666,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                             self.__WorkDict[ParName] = []
                         else:
                             self.__WorkDict[ParName] = ""
-                    elif ParMode == self.__WorkModes['ip'] or ParMode == self.__WorkModes['ip4'] or ParMode == self.__WorkModes['lip'] or ParMode == self.__WorkModes['lip']:
-                        if ParMulti:
-                            self.__WorkDict[ParName] = ['0.0.0.0']
-                        else:
-                            self.__WorkDict[ParName] = '0.0.0.0'
-                    elif ParMode == self.__WorkModes['ip6'] or ParMode == self.__WorkModes['lip6']:
-                        if ParMulti:
-                            self.__WorkDict[ParName] = ['::']
-                        else:
-                            self.__WorkDict[ParName] = '::'
                     elif ParMode == self.__WorkModes['int']:
                         if ParMulti:
                             self.__WorkDict[ParName] = []
@@ -3343,23 +3137,6 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 self.__WorkDict[ParName].append(a)
             else:
                 self.__WorkDict[ParName] = a
-            return None
-#-------------------------
-# IP
-#-------------------------
-        if wMod in self.__IpModes:
-            if wMulti:
-                if ParName not in self:
-                   self.__WorkDict[ParName] = []
-            
-            wIp = self.__IpModes[wMod][0](a)
-            if wIp is None:
-                return self._Translation[self.__IpModes[wMod][1]].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'IpVers':self.__IpModes[wMod][2]})
-            if wMulti:
-                self.__WorkDict[ParName].append(wIp)
-            else:
-                self.__WorkDict[ParName] = wIp
             return None
 #-------------------------
 # Integer
