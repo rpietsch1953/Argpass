@@ -48,7 +48,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '302.220918124812'
+__updated__ = '303.220918124812'
 Version = f"1.14.{__updated__}"
 
 GLOBAL_NAME = 'global'
@@ -2001,7 +2001,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 #---------------------------------------------
 #
     @property
-    def OwnIpAddresses(self) -> list[str]:
+    def OwnIpAddresses(self) -> list:
         """
         Return a list of all IP addresses on this computer
         at this time (either IPV4 or IPV6)

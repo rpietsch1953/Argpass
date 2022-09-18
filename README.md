@@ -8,7 +8,7 @@
 
 <div class="version">
 
-1.14.302.220918124812
+1.14.303.220918124812
 
 </div>
 
@@ -50,7 +50,7 @@
 
 # Welcome to pcs\_argpass’s documentation\!
 
-Document version: 1.14.302.220918124812
+Document version: 1.14.303.220918124812
 
 <div class="admonition note">
 
@@ -666,7 +666,7 @@ Public License for more details.
     
       - *<span class="pre">property</span><span class="w">
         </span>*<span class="sig-name descname"><span class="pre">OwnIpAddresses</span></span>*<span class="p"><span class="pre">:</span></span><span class="w">
-        </span><span class="pre">list</span><span class="p"><span class="pre">\  
+        </span><span class="pre">list</span>*  
         Return a list of all IP addresses on this computer at this time
         (either IPV4 or IPV6)
         
