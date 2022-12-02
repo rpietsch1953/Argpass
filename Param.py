@@ -48,7 +48,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '303.220918124812'
+__updated__ = '304.221202113050'
 Version = f"1.14.{__updated__}"
 
 GLOBAL_NAME = 'global'
@@ -3408,7 +3408,10 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     **{'OptValue':a, 'ParKey':ParKey})
                 # return f"Value {a} for parameter {ParKey} is not a valid integer"
             if ParName in self.__WorkDict:
-                self.__WorkDict[ParName] += n
+                if ParKey.startswith('--'):
+                    self.__WorkDict[ParName] = n
+                else:
+                    self.__WorkDict[ParName] += n
             else:
                 self.__WorkDict[ParName] = n
             return None
