@@ -48,7 +48,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '304.221202113050'
+__updated__ = '305.221230100435'
 Version = f"1.14.{__updated__}"
 
 GLOBAL_NAME = 'global'
@@ -2625,8 +2625,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     LimitText = ' ' + LimitText
 
             if not ShowDef:
-                if Ut_Default == '' or Ut_Default == 0 or not Ut_Default:
-                    Ut_Default = None
+                # if Ut_Default == '' or Ut_Default == 0 or not Ut_Default:
+                Ut_Default = None
             if Ut_Default is None:
                 Ut_Default = LimitText
             else:
