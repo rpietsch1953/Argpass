@@ -41,19 +41,19 @@ from netifaces import ifaddresses, interfaces
 
 try:
     # import json5
-    globals()['json5'] = import_module('json5') # to fake requirements.txt
-    JsonLoads = json5.loads         # type: ignore  pylint: disable=undefined-variable
-    JsonLoad = json5.load           # type: ignore  pylint: disable=undefined-variable
+    globals()["json5"] = import_module("json5")  # to fake requirements.txt
+    JsonLoads = json5.loads  # type: ignore  pylint: disable=undefined-variable
+    JsonLoad = json5.load  # type: ignore  pylint: disable=undefined-variable
 except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = '305.221230100435'
-Version = f"1.14.{__updated__}"
+__updated__ = "319.230127164917"
+Version = f"1.15.{__updated__}"
 
-GLOBAL_NAME = 'global'
+GLOBAL_NAME = "global"
 
-GPL_Preamble:str = """
+GPL_Preamble: str = """
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -66,7 +66,7 @@ GNU General Public License for more details.
 
 """
 
-GPL_Preamble_DE:str = """
+GPL_Preamble_DE: str = """
 Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
 der GNU General Public License, wie von der Free Software Foundation,
 Version 3 der Lizenz oder jeder neueren veröffentlichten Version,
@@ -79,7 +79,7 @@ Siehe die GNU General Public License für weitere Einzelheiten.
 
 """
 
-GPL3_2007:str = """
+GPL3_2007: str = """
                     GNU GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
@@ -702,7 +702,7 @@ copy of the Program in return for a fee.
 
 """
 
-LGPL_Preamble:str = """
+LGPL_Preamble: str = """
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
 by the Free Software Foundation, either version 3 of the License, or
@@ -715,7 +715,7 @@ GNU General Public License for more details.
 
 """
 
-LGPL_Preamble_DE:str = """
+LGPL_Preamble_DE: str = """
 Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
 der GNU Lesser General Public License, wie von der Free Software
 Foundation, Version 3 der Lizenz oder jeder neueren veröffentlichten
@@ -728,7 +728,7 @@ Siehe die GNU General Public License für weitere Einzelheiten.
 
 """
 
-LGPL3_2007:str = """
+LGPL3_2007: str = """
                   GNU LESSER GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
@@ -886,213 +886,121 @@ authorization for you to choose that version for the Library.
 
 """
 
-Translation_en_US:dict = {
-    'PrefixError':
-        "Error in prefixed parameter {OptionName}",
-    'JsonError':
-        "Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}",
-    'PathNoFile':
-        "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a file",
-    'PathNoDir':
-        "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a directory",
-    'PathNoPath':
-        "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not valid on this filesystem",
-    'LessLow':
-        "Value '{OptValue}' for parameter {ParKey} is less than lower limit ({LowLimit})",
-    'HigherUp':
-        "Value '{OptValue}' for parameter {ParKey} is bigger than upper limit ({UppLimit})",
-    'NoInt':
-        "Value '{OptValue}' for parameter {ParKey} is not a valid integer",
-    'NoFloat':
-        "Value '{OptValue}' for parameter {ParKey} is not a valid floating point number",
-    'NoBool':
-        "Value '{OptValue}' for parameter {ParKey} is not valid boolean (YyTtJj1NnFf0)",
-    'OptionNotDefined':
-        "No action defined for {OptionName}",
-    'OptionRequired':
-        "{DefArgName} ({ParList}) required but not given",
-    'TypePath':
-        "path",
-    'TypeInteger':
-        "integer",
-    'TypeBool':
-        "bool",
-    'TypeFloat':
-        "float",
-    'TypeFile':
-        "file",
-    'TypeDir':
-        "directory",
-    'TypeCount':
-        "counter",
-    'TypeHelp':
-        "help",
-    'TypeImport':
-        "import",
-    'TypeExport':
-        "export",
-    'TypeGlobImport':
-        "global import",
-    'TypeGlobExport':
-        "global export",
-    'TypeStr':
-        "string",
-    'TypeIp':
-        "IP address",
-    'TypeIp4':
-        "IPV4 address",
-    'TypeIp6':
-        "IPV6 address",
-    'TypeLocalIp':
-        "local IP address",
-    'TypeLocalIp4':
-        "local IPV4 address",
-    'TypeLocalIp6':
-        "local IPV6 address",
-    'HelpDefault':
-        "Default",
-    'HelpValue':
-        "value",
-    'HelpUsage':
-        "Usage:",
-    'HelpVersion':
-        "Version:",
-    'HelpOptions':
-        "Options:",
-    'HelpOptionInline':
-        "[OPTIONS ...]",
-    'OptionRequiresArgumentLong':
-        "option --{opt} requires argument",
-    'OptionNeedNoArgs':
-        "option --{opt} must not have an argument",
-    'OptionNotRecognizedLong':
-        "option --{opt} not recognized",
-    'ParNoUniquePrefix':
-        "option --{opt} not a unique prefix",
-    'OptionRequiresArgumentShort':
-        "option -{opt} requires argument",
-    'OptionNotRecognizedShort':
-        "option -{opt} not recognized",
-    'UndefinedOptionSingle':
-        "option {OptStr} not recognized",
-    'UndefinedOptionMultiple':
-        "options {OptStr} not recognized",
-    'InvalidIp':
-        "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
-    'InvalidLocalIp':
-        "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
-    }
+Translation_en_US: dict = {
+    "PrefixError": "Error in prefixed parameter {OptionName}",
+    "JsonError": "Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}",
+    "PathNoFile": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a file",
+    "PathNoDir": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a directory",
+    "PathNoPath": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not valid on this filesystem",
+    "LessLow": "Value '{OptValue}' for parameter {ParKey} is less than lower limit ({LowLimit})",
+    "HigherUp": "Value '{OptValue}' for parameter {ParKey} is bigger than upper limit ({UppLimit})",
+    "NoInt": "Value '{OptValue}' for parameter {ParKey} is not a valid integer",
+    "NoFloat": "Value '{OptValue}' for parameter {ParKey} is not a valid floating point number",
+    "NoBool": "Value '{OptValue}' for parameter {ParKey} is not valid boolean (YyTtJj1NnFf0)",
+    "OptionNotDefined": "No action defined for {OptionName}",
+    "OptionRequired": "{DefArgName} ({ParList}) required but not given",
+    "TypePath": "path",
+    "TypeInteger": "integer",
+    "TypeBool": "bool",
+    "TypeFloat": "float",
+    "TypeFile": "file",
+    "TypeDir": "directory",
+    "TypeCount": "counter",
+    "TypeHelp": "help",
+    "TypeImport": "import",
+    "TypeExport": "export",
+    "TypeGlobImport": "global import",
+    "TypeGlobExport": "global export",
+    "TypeStr": "string",
+    "TypeIp": "IP address",
+    "TypeIp4": "IPV4 address",
+    "TypeIp6": "IPV6 address",
+    "TypeLocalIp": "local IP address",
+    "TypeLocalIp4": "local IPV4 address",
+    "TypeLocalIp6": "local IPV6 address",
+    "HelpDefault": "Default",
+    "HelpValue": "value",
+    "HelpUsage": "Usage:",
+    "HelpVersion": "Version:",
+    "HelpOptions": "Options:",
+    "HelpOptionInline": "[OPTIONS ...]",
+    "OptionRequiresArgumentLong": "option --{opt} requires argument",
+    "OptionNeedNoArgs": "option --{opt} must not have an argument",
+    "OptionNotRecognizedLong": "option --{opt} not recognized",
+    "ParNoUniquePrefix": "option --{opt} not a unique prefix",
+    "OptionRequiresArgumentShort": "option -{opt} requires argument",
+    "OptionNotRecognizedShort": "option -{opt} not recognized",
+    "UndefinedOptionSingle": "option {OptStr} not recognized",
+    "UndefinedOptionMultiple": "options {OptStr} not recognized",
+    "InvalidIp": "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
+    "InvalidLocalIp": "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
+}
 
-Translation_de_DE:dict = {
-   'HigherUp':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist größer als das obere Limit ({UppLimit})",
-    'JsonError':
-        "Fehler beim Import '{wMsg}' aus der Datei {OptionPath} ({FullPath}) für den Parameter {OptionName}",
-    'LessLow':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist kleiner als das untere Limit ({LowLimit})",
-    'NoBool':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist kein Wahrheitswert (YyTtJj1NnFf0)",
-    'NoFloat':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige Fließkommazahl",
-    'NoInt':
-        "Value '{OptValue}' für den Parameter {ParKey} ist keine gültige Ganzzahl",
-    'OptionNotDefined':
-        "Die Option '{OptionName}' ist ungültig",
-    'OptionRequired':
-        "Der Parameter '{DefArgName}' ({ParList}) muß angegeben werden",
-    'PathNoDir':
-        "Die Pfadangabe '{OptionPath}' ({FullPath}) für die Option {OptionName} ist kein Verzeichnis",
-    'PathNoFile':
-        "Die Pfadangabe '{OptionPath}' ({FullPath}) für die Option {OptionName} ist keine Datei",
-    'PathNoPath':
-        "Die Pfadangabe '{OptionPath}' ({FullPath}) für den Option {OptionName} ist bei diesem Dateisystem ungültig",
-    'PrefixError':
-        "Der angegebene Prefix für die Option '{OptionName}' ist ungültig",
-    'TypePath':
-        "Pfad",
-    'TypeInteger':
-        "Ganzzahl",
-    'TypeBool':
-        "Wahrheitswert",
-    'TypeFloat':
-        "Fliesskommazahl",
-    'TypeFile':
-        "Datei",
-    'TypeDir':
-        "Verzeichnis",
-    'TypeCount':
-        "Zähler",
-    'TypeHelp':
-        "Hilfe",
-    'TypeImport':
-        "Import",
-    'TypeExport':
-        "Export",
-    'TypeGlobImport':
-        "Globaler Import",
-    'TypeGlobExport':
-        "Global Export",
-    'TypeStr':
-        "Zeichenkette",
-    'TypeIp':
-        "IP Adresse",
-    'TypeIp4':
-        "IPV4 Adresse",
-    'TypeIp6':
-        "IPV6 Adresse",
-    'TypeLocalIp':
-        "locale IP Adresse",
-    'TypeLocalIp4':
-        "locale IPV4 Adresse",
-    'TypeLocalIp6':
-        "locale IPV6 Adresse",
-'HelpDefault':
-        "Standardwert",
-    'HelpValue':
-        "Wert",
-    'HelpUsage':
-        "Verwendung:",
-    'HelpVersion':
-        "Version:",
-    'HelpOptions':
-        "Folgende Optionen sind möglich:",
-    'HelpOptionInline':
-        "[OPTION ...]",
-    'OptionRequiresArgumentLong':
-        "Option --{opt} verlangt einen Wert",
-    'OptionNeedNoArgs':
-        "Option --{opt} darf keinen Wert haben",
-    'OptionNotRecognizedLong':
-        "Option --{opt} ist unbekannt",
-    'ParNoUniquePrefix':
-        "Option --{opt} ist mehrdeutig",
-    'OptionRequiresArgumentShort':
-        "Option -{opt} verlangt einen Wert",
-    'OptionNotRecognizedShort':
-        "Option -{opt} ist unbekannt",
-    'UndefinedOptionSingle':
-        "Unbekannte Option {OptStr} angegeben",
-    'UndefinedOptionMultiple':
-        "Unbekannte Optionen {OptStr} angegeben",
-    'InvalidIp':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige IP{IpVers} Adresse",
-    'InvalidLocalIp':
-        "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige, lokale IP{IpVers} Adresse auf diesem Computer",
-    }
+Translation_de_DE: dict = {
+    "HigherUp": "Der Wert '{OptValue}' für den Parameter {ParKey} ist größer als das obere Limit ({UppLimit})",
+    "JsonError": "Fehler beim Import '{wMsg}' aus der Datei {OptionPath} ({FullPath}) für den Parameter {OptionName}",
+    "LessLow": "Der Wert '{OptValue}' für den Parameter {ParKey} ist kleiner als das untere Limit ({LowLimit})",
+    "NoBool": "Der Wert '{OptValue}' für den Parameter {ParKey} ist kein Wahrheitswert (YyTtJj1NnFf0)",
+    "NoFloat": "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige Fließkommazahl",
+    "NoInt": "Value '{OptValue}' für den Parameter {ParKey} ist keine gültige Ganzzahl",
+    "OptionNotDefined": "Die Option '{OptionName}' ist ungültig",
+    "OptionRequired": "Der Parameter '{DefArgName}' ({ParList}) muß angegeben werden",
+    "PathNoDir": "Die Pfadangabe '{OptionPath}' ({FullPath}) für die Option {OptionName} ist kein Verzeichnis",
+    "PathNoFile": "Die Pfadangabe '{OptionPath}' ({FullPath}) für die Option {OptionName} ist keine Datei",
+    "PathNoPath": "Die Pfadangabe '{OptionPath}' ({FullPath}) für den Option {OptionName} ist bei diesem Dateisystem ungültig",
+    "PrefixError": "Der angegebene Prefix für die Option '{OptionName}' ist ungültig",
+    "TypePath": "Pfad",
+    "TypeInteger": "Ganzzahl",
+    "TypeBool": "Wahrheitswert",
+    "TypeFloat": "Fliesskommazahl",
+    "TypeFile": "Datei",
+    "TypeDir": "Verzeichnis",
+    "TypeCount": "Zähler",
+    "TypeHelp": "Hilfe",
+    "TypeImport": "Import",
+    "TypeExport": "Export",
+    "TypeGlobImport": "Globaler Import",
+    "TypeGlobExport": "Global Export",
+    "TypeStr": "Zeichenkette",
+    "TypeIp": "IP Adresse",
+    "TypeIp4": "IPV4 Adresse",
+    "TypeIp6": "IPV6 Adresse",
+    "TypeLocalIp": "locale IP Adresse",
+    "TypeLocalIp4": "locale IPV4 Adresse",
+    "TypeLocalIp6": "locale IPV6 Adresse",
+    "HelpDefault": "Standardwert",
+    "HelpValue": "Wert",
+    "HelpUsage": "Verwendung:",
+    "HelpVersion": "Version:",
+    "HelpOptions": "Folgende Optionen sind möglich:",
+    "HelpOptionInline": "[OPTION ...]",
+    "OptionRequiresArgumentLong": "Option --{opt} verlangt einen Wert",
+    "OptionNeedNoArgs": "Option --{opt} darf keinen Wert haben",
+    "OptionNotRecognizedLong": "Option --{opt} ist unbekannt",
+    "ParNoUniquePrefix": "Option --{opt} ist mehrdeutig",
+    "OptionRequiresArgumentShort": "Option -{opt} verlangt einen Wert",
+    "OptionNotRecognizedShort": "Option -{opt} ist unbekannt",
+    "UndefinedOptionSingle": "Unbekannte Option {OptStr} angegeben",
+    "UndefinedOptionMultiple": "Unbekannte Optionen {OptStr} angegeben",
+    "InvalidIp": "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige IP{IpVers} Adresse",
+    "InvalidLocalIp": "Der Wert '{OptValue}' für den Parameter {ParKey} ist keine gültige, lokale IP{IpVers} Adresse auf diesem Computer",
+}
 
-class Param():
+
+class Param:
     """
-Main class and also the result-dictionary.
-A member of this class acts like a dictionary. There are some special cases
-if you use nested childs. (Check out the :doc:`usage` section for further information)
+    Main class and also the result-dictionary.
+    A member of this class acts like a dictionary. There are some special cases
+    if you use nested childs. (Check out the :doc:`usage` section for further information)
 
     """
+
     class __ExceptionTemplate(Exception):
         def __call__(self, *args):
-                return self.__class__(*(self.args + args))
+            return self.__class__(*(self.args + args))
 
         def __str__(self):
-                return ': '.join(self.args)
+            return ": ".join(self.args)
 
     class DeclarationError(__ExceptionTemplate):
         """
@@ -1104,7 +1012,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             initiated errors.
 
         """
-        pass                            # pylint: disable=unnecessary-pass
+
+        pass  # pylint: disable=unnecessary-pass
 
     class ParamError(__ExceptionTemplate):
         """
@@ -1123,11 +1032,12 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             module.
 
         """
-        pass                            # pylint: disable=unnecessary-pass
+
+        pass  # pylint: disable=unnecessary-pass
 
     class __PathEncoder(json.JSONEncoder):
-        """Subclass to encode path for json
-        """
+        """Subclass to encode path for json"""
+
         def default(self, o):
             """The "real" encoder
 
@@ -1140,125 +1050,81 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 any: the encoded Path or the default result
             """
             if isinstance(o, Path) or isinstance(o, PurePath):
-                return str(o)             # return the string representation of the Path
+                return str(o)  # return the string representation of the Path
             else:
-                return super().default(o)   # let the default library do the work
+                return super().default(o)  # let the default library do the work
 
     _InitTranslation = {
-            'PrefixError':
-                "Error in prefixed parameter {OptionName}",
-            'JsonError':
-                "Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}",
-            'PathNoFile':
-                "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a file",
-            'PathNoDir':
-                "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a directory",
-            'PathNoPath':
-                "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not valid on this filesystem",
-            'LessLow':
-                "Value '{OptValue}' for parameter {ParKey} is less than lower limit ({LowLimit})",
-            'HigherUp':
-                "Value '{OptValue}' for parameter {ParKey} is bigger than upper limit ({UppLimit})",
-            'NoInt':
-                "Value '{OptValue}' for parameter {ParKey} is not a valid integer",
-            'NoFloat':
-                "Value '{OptValue}' for parameter {ParKey} is not a valid floating point number",
-            'NoBool':
-                "Value '{OptValue}' for parameter {ParKey} is not valid boolean (YyTtJj1NnFf0)",
-            'OptionNotDefined':
-                "No action defined for {OptionName}",
-            'OptionRequired':
-                "{DefArgName} ({ParList}) required but not given",
-            'TypePath':
-                "path",
-            'TypeInteger':
-                "integer",
-            'TypeBool':
-                "bool",
-            'TypeFloat':
-                "float",
-            'TypeFile':
-                "file",
-            'TypeDir':
-                "directory",
-            'TypeCount':
-                "counter",
-            'TypeHelp':
-                "help",
-            'TypeImport':
-                "import",
-            'TypeExport':
-                "export",
-            'TypeGlobImport':
-                "global import",
-            'TypeGlobExport':
-                "global export",
-            'TypeStr':
-                "string",
-            'TypeIp':
-                "IP address",
-            'TypeIp4':
-                "IPV4 address",
-            'TypeIp6':
-                "IPV6 address",
-            'TypeLocalIp':
-                "local IP address",
-            'TypeLocalIp4':
-                "local IPV4 address",
-            'TypeLocalIp6':
-                "local IPV6 address",
-            'HelpDefault':
-                "Default",
-            'HelpValue':
-                "value",
-            'HelpUsage':
-                "Usage:",
-            'HelpVersion':
-                "Version:",
-            'HelpOptions':
-                "Options:",
-            'HelpOptionInline':
-                "[OPTIONS ...]",
-            'OptionRequiresArgumentLong':
-                "option --{opt} requires argument",
-            'OptionNeedNoArgs':
-                "option --{opt} must not have an argument",
-            'OptionNotRecognizedLong':
-                "option --{opt} not recognized",
-            'ParNoUniquePrefix':
-                "option --{opt} not a unique prefix",
-            'OptionRequiresArgumentShort':
-                "option -{opt} requires argument",
-            'OptionNotRecognizedShort':
-                "option -{opt} not recognized",
-            'UndefinedOptionSingle':
-                "option {OptStr} not recognized",
-            'UndefinedOptionMultiple':
-                "options {OptStr} not recognized",
-            'InvalidIp':
-                "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
-            'InvalidLocalIp':
-                "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
-        }
+        "PrefixError": "Error in prefixed parameter {OptionName}",
+        "JsonError": "Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}",
+        "PathNoFile": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a file",
+        "PathNoDir": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not a directory",
+        "PathNoPath": "The path '{OptionPath}' ({FullPath}) for parameter {OptionName} is not valid on this filesystem",
+        "LessLow": "Value '{OptValue}' for parameter {ParKey} is less than lower limit ({LowLimit})",
+        "HigherUp": "Value '{OptValue}' for parameter {ParKey} is bigger than upper limit ({UppLimit})",
+        "NoInt": "Value '{OptValue}' for parameter {ParKey} is not a valid integer",
+        "NoFloat": "Value '{OptValue}' for parameter {ParKey} is not a valid floating point number",
+        "NoBool": "Value '{OptValue}' for parameter {ParKey} is not valid boolean (YyTtJj1NnFf0)",
+        "OptionNotDefined": "No action defined for {OptionName}",
+        "OptionRequired": "{DefArgName} ({ParList}) required but not given",
+        "TypePath": "path",
+        "TypeInteger": "integer",
+        "TypeBool": "bool",
+        "TypeFloat": "float",
+        "TypeFile": "file",
+        "TypeDir": "directory",
+        "TypeCount": "counter",
+        "TypeHelp": "help",
+        "TypeImport": "import",
+        "TypeExport": "export",
+        "TypeGlobImport": "global import",
+        "TypeGlobExport": "global export",
+        "TypeStr": "string",
+        "TypeIp": "IP address",
+        "TypeIp4": "IPV4 address",
+        "TypeIp6": "IPV6 address",
+        "TypeLocalIp": "local IP address",
+        "TypeLocalIp4": "local IPV4 address",
+        "TypeLocalIp6": "local IPV6 address",
+        "HelpDefault": "Default",
+        "HelpValue": "value",
+        "HelpUsage": "Usage:",
+        "HelpVersion": "Version:",
+        "HelpOptions": "Options:",
+        "HelpOptionInline": "[OPTIONS ...]",
+        "OptionRequiresArgumentLong": "option --{opt} requires argument",
+        "OptionNeedNoArgs": "option --{opt} must not have an argument",
+        "OptionNotRecognizedLong": "option --{opt} not recognized",
+        "ParNoUniquePrefix": "option --{opt} not a unique prefix",
+        "OptionRequiresArgumentShort": "option -{opt} requires argument",
+        "OptionNotRecognizedShort": "option -{opt} not recognized",
+        "UndefinedOptionSingle": "option {OptStr} not recognized",
+        "UndefinedOptionMultiple": "options {OptStr} not recognized",
+        "InvalidIp": "Value '{OptValue}' for parameter {ParKey} is not a valid IP{IpVers} address",
+        "InvalidLocalIp": "Value '{OptValue}' for parameter {ParKey} is no a valid local IP{IpVers} address on this computer",
+    }
 
-
-    def __init__(self, *,                          # pylint: disable=dangerous-default-value
-            Def:dict = {},
-            Args:Optional[list] = None,
-            Chk = None,
-            Desc:str = "",
-            AddPar:str = "",
-            AllParams:bool = True,
-            UserPars:Optional[dict] = None,
-            UserModes:Optional[dict] = None,
-            ErrorOnUnknown:bool = True,
-            HelpType:int = 0,
-            Children:dict = {},
-            translation:dict = {},
-            Version:str = '',                       # pylint: disable=redefined-outer-name
-            License:Union[str,tuple,list,dict,None] = None,             # pylint: disable=too-many-function-args
-            ShowPrefixOnHelp:bool = True,
-            _Child = False):
+    def __init__(
+        self,
+        *,  # pylint: disable=dangerous-default-value
+        Def: dict = {},
+        Args: Optional[list] = None,
+        Chk=None,
+        Desc: str = "",
+        AddPar: str = "",
+        AllParams: bool = True,
+        UserPars: Optional[dict] = None,
+        UserModes: Optional[dict] = None,
+        ErrorOnUnknown: bool = True,
+        HelpType: int = 0,
+        Children: dict = {},
+        translation: dict = {},
+        Version: str = "",  # pylint: disable=redefined-outer-name
+        License: Union[str, tuple, list, dict, None] = None,  # pylint: disable=too-many-function-args
+        ShowPrefixOnHelp: bool = True,
+        ShowConfigName: bool = False,
+        _Child=False,
+    ):
 
         """
         This is the constructor of the Param-class.
@@ -1381,8 +1247,10 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 ------------------------------------------------------------
 
         is printed within the help-output to divide child help from each other
-
+        defaults to True
         :type ShowPrefixOnHelp: bool, optional
+        :param ShowConfigName: Anzeige des Parameters innerhalb der Config-Datei, defaults to False
+        :type ShowConfigName:  bool, optional
         :param _Child: True if this instance should be a child, defaults to False
         :type _Child: bool, optional
 
@@ -1451,192 +1319,193 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 
         """
 
-#---------------------------------------------
-# Class-local Data
-#---------------------------------------------
-        self.__WorkDict:dict = {}           # This is the result dictionary used to make the class look like dicktionary
-        self.__Version = Version            # Optional version string for help display
-        self.__Children:Dict[str,Param] = {}    # Dictionary of our children (all are our one class! )
-        self.__Parent:Union[Param,None] = None        # Our parent if we are a child else None
-        self.__MyProgName:str = ""          # the programm-name from __Argumente[0] (only name)
-        self.__MyProgPath:str = ""          # the path of the executeable from __Argumente[0]
-        self.__MyPwd:str = ""               # Actual directory at invocation of "Process"
-        self.__Definition:dict = {}         # the definition-dict
-        self.__Description:str = ""         # Description of program for help
-        self.__Argumente:list = []          # list of commandline arguments
-        self.__ChkFunc = None               # pylint: disable=unused-private-member # external check-funktion (not implemented jet)
-        self.__ErrorOnUnknown:bool = ErrorOnUnknown # raise error if unknown options on commandline
-        self.__UsageText:str = ""           # Complete help-text
-        self.__ShortStr:str = ""            # String of short parameters (e.g. "vhl:m:")
-        self.__ShortList:list = []          # List of short parameters (e.g. ["v", "h", "l:", "m:"])
-        self.__LongList:list = []           # List of Long parameters (e.g. "help","len="...)
-        self.__ParDict:dict = {}            # dict of "argtext" -> "Parameter-name"
-        self.__RemainArgs:list = []         # List of remaining arguments from commandline
-        self.__UnusedArgs:list = []         # liste aller nicht vorgesehener Parameter
-        self.__AddPar:str = ""              # Additional parameter Text (for help)
-        self.__UsageTextList:list = []      # List of single help entries (also lists)
-        self.__IsPrepared:bool = False      # Marker if "Prepare" is run after changes
+        # ---------------------------------------------
+        # Class-local Data
+        # ---------------------------------------------
+        self.__WorkDict: dict = {}  # This is the result dictionary used to make the class look like dicktionary
+        self.__Version = Version  # Optional version string for help display
+        self.__Children: Dict[str, Param] = {}  # Dictionary of our children (all are our one class! )
+        self.__Parent: Union[Param, None] = None  # Our parent if we are a child else None
+        self.__MyProgName: str = ""  # the programm-name from __Argumente[0] (only name)
+        self.__MyProgPath: str = ""  # the path of the executeable from __Argumente[0]
+        self.__MyPwd: str = ""  # Actual directory at invocation of "Process"
+        self.__Definition: dict = {}  # the definition-dict
+        self.__Description: str = ""  # Description of program for help
+        self.__Argumente: list = []  # list of commandline arguments
+        self.__ChkFunc = None  # pylint: disable=unused-private-member # external check-funktion (not implemented jet)
+        self.__ErrorOnUnknown: bool = ErrorOnUnknown  # raise error if unknown options on commandline
+        self.__UsageText: str = ""  # Complete help-text
+        self.__ShortStr: str = ""  # String of short parameters (e.g. "vhl:m:")
+        self.__ShortList: list = []  # List of short parameters (e.g. ["v", "h", "l:", "m:"])
+        self.__LongList: list = []  # List of Long parameters (e.g. "help","len="...)
+        self.__ParDict: dict = {}  # dict of "argtext" -> "Parameter-name"
+        self.__RemainArgs: list = []  # List of remaining arguments from commandline
+        self.__UnusedArgs: list = []  # liste aller nicht vorgesehener Parameter
+        self.__AddPar: str = ""  # Additional parameter Text (for help)
+        self.__UsageTextList: list = []  # List of single help entries (also lists)
+        self.__IsPrepared: bool = False  # Marker if "Prepare" is run after changes
 
-        self.__HelpList:list = []           # List of all parameters with type 'H'  (Help)
-        self.__ImportList:list = []         # List of all parameters with type 'x'  (single Import)
-        self.__ExportList:list = []         # List of all parameters with type 'X'  (single Export)
-        self.__LicenseList:list = []        # List of all parameters with type '§'  (License)
-        self.__FullLicenseList:list = []    # List of all parameters with type 'L'  (full License)
-        self.__Glob_ImportList:list = []    # List of all parameters with type '<'  (global Import)
-        self.__Glob_ExportList:list = []    # List of all parameters with type '>'  (Global Export)
-        self.__AllParams:bool = True        # True if all parameters are initialized, if False
-                                            # only parameters with defaults or on the commandline
-                                            # are in the dictionary
-        self.__Prefix:str = GLOBAL_NAME
-        self.__Glob_ExportStr:str = ''
-        self.__HelpType:int = HelpType      # Type of help output
+        self.__HelpList: list = []  # List of all parameters with type 'H'  (Help)
+        self.__ImportList: list = []  # List of all parameters with type 'x'  (single Import)
+        self.__ExportList: list = []  # List of all parameters with type 'X'  (single Export)
+        self.__LicenseList: list = []  # List of all parameters with type '§'  (License)
+        self.__FullLicenseList: list = []  # List of all parameters with type 'L'  (full License)
+        self.__Glob_ImportList: list = []  # List of all parameters with type '<'  (global Import)
+        self.__Glob_ExportList: list = []  # List of all parameters with type '>'  (Global Export)
+        self.__AllParams: bool = True  # True if all parameters are initialized, if False
+        # only parameters with defaults or on the commandline
+        # are in the dictionary
+        self.__Prefix: str = GLOBAL_NAME
+        self.__Glob_ExportStr: str = ""
+        self.__HelpType: int = HelpType  # Type of help output
         self.__ShowPrefixOnHelp = ShowPrefixOnHelp
-
-        self._Translation:dict = {}         # Dictionary for translations
-        self.__License:list = ['']
-        if isinstance(License,str):
+        self.__ShowConfigName = ShowConfigName
+        self._Translation: dict = {}  # Dictionary for translations
+        self.__License: list = [""]
+        if isinstance(License, str):
             self.__License = [License]
-        elif isinstance(License,(tuple,list)):
+        elif isinstance(License, (tuple, list)):
             self.__License = list(License)
-        elif isinstance(License,dict):
+        elif isinstance(License, dict):
             self.__License = list(License.values())
         self.__WorkPars = {
-            'shortpar':     's',
-            'longpar':      'l',
-            'needoption':   'o',
-            'default':      'v',
-            'mode':         'm',
-            'description':  'd',
-            'lowlimit':     'L',
-            'uplimit':      'U',
-            'required':     'r',
-            'multiple':     'M'
-            }
-
-
-        self.__WorkModes = {
-            'text':         't',
-            'bool':         'b',
-            'path':         'p',
-            'file':         'f',
-            'dir':          'd',
-            'int':          'i',
-            'float':        'F',
-            'count':        'C',
-            'help':         'H',
-            'import':       'x',
-            'export':       'X',
-            'glob_import':  '<',
-            'glob_export':  '>',
-            'license':      '§',
-            'fullLicense':  'L',
-            'ip4':          'ip4',
-            'ip6':          'ip6',
-            'ip':           'ip',
-            'lip4':         'lip4',
-            'lip6':         'lip6',
-            'lip':          'lip',
-            }
-        # Liste der nicht einzufügenden Befehle
-        self.__SpecialOpts = self.__WorkModes['help']
-        self.__SpecialOpts += self.__WorkModes['import']
-        self.__SpecialOpts += self.__WorkModes['export']
-        self.__SpecialOpts += self.__WorkModes['glob_import']
-        self.__SpecialOpts += self.__WorkModes['glob_export']
-        self.__SpecialOpts += self.__WorkModes['license']
-        self.__SpecialOpts += self.__WorkModes['fullLicense']
-
-        self.__ModeToList = {
-            self.__WorkModes['help']: self.__HelpList,
-            self.__WorkModes['import']: self.__ImportList,
-            self.__WorkModes['export']: self.__ExportList,
-            self.__WorkModes['glob_import']: self.__Glob_ImportList,
-            self.__WorkModes['glob_export']: self.__Glob_ExportList,
-            self.__WorkModes['license']: self.__LicenseList,
-            self.__WorkModes['fullLicense']: self.__FullLicenseList,
-            }
-
-        self.__IpModes = {
-            self.__WorkModes['ip']: [self.IsValidIp,'InvalidIp','','TypeIp'],
-            self.__WorkModes['ip4']: [self.IsValidIp4,'InvalidIp','V4','TypeIp4'],
-            self.__WorkModes['ip6']: [self.IsValidIp6,'InvalidIp','V6','TypeIp6'],
-            self.__WorkModes['lip']: [self.IsValidLocalIp,'InvalidLocalIp','','TypeLocalIp'],
-            self.__WorkModes['lip4']: [self.IsValidLocalIp4,'InvalidLocalIp','V4','TypeLocalIp4'],
-            self.__WorkModes['lip6']: [self.IsValidLocalIp6,'InvalidLocalIp','V6','TypeLocalIp6'],
+            "shortpar": "s",
+            "longpar": "l",
+            "needoption": "o",
+            "default": "v",
+            "mode": "m",
+            "description": "d",
+            "lowlimit": "L",
+            "uplimit": "U",
+            "required": "r",
+            "multiple": "M",
         }
 
-# set the parameters with the individual functions
+        self.__WorkModes = {
+            "text": "t",
+            "bool": "b",
+            "path": "p",
+            "file": "f",
+            "dir": "d",
+            "int": "i",
+            "float": "F",
+            "count": "C",
+            "help": "H",
+            "import": "x",
+            "export": "X",
+            "glob_import": "<",
+            "glob_export": ">",
+            "license": "§",
+            "fullLicense": "L",
+            "ip4": "ip4",
+            "ip6": "ip6",
+            "ip": "ip",
+            "lip4": "lip4",
+            "lip6": "lip6",
+            "lip": "lip",
+        }
+        # Liste der nicht einzufügenden Befehle
+        self.__SpecialOpts = self.__WorkModes["help"]
+        self.__SpecialOpts += self.__WorkModes["import"]
+        self.__SpecialOpts += self.__WorkModes["export"]
+        self.__SpecialOpts += self.__WorkModes["glob_import"]
+        self.__SpecialOpts += self.__WorkModes["glob_export"]
+        self.__SpecialOpts += self.__WorkModes["license"]
+        self.__SpecialOpts += self.__WorkModes["fullLicense"]
+
+        self.__ModeToList = {
+            self.__WorkModes["help"]: self.__HelpList,
+            self.__WorkModes["import"]: self.__ImportList,
+            self.__WorkModes["export"]: self.__ExportList,
+            self.__WorkModes["glob_import"]: self.__Glob_ImportList,
+            self.__WorkModes["glob_export"]: self.__Glob_ExportList,
+            self.__WorkModes["license"]: self.__LicenseList,
+            self.__WorkModes["fullLicense"]: self.__FullLicenseList,
+        }
+
+        self.__IpModes = {
+            self.__WorkModes["ip"]: [self.IsValidIp, "InvalidIp", "", "TypeIp"],
+            self.__WorkModes["ip4"]: [self.IsValidIp4, "InvalidIp", "V4", "TypeIp4"],
+            self.__WorkModes["ip6"]: [self.IsValidIp6, "InvalidIp", "V6", "TypeIp6"],
+            self.__WorkModes["lip"]: [self.IsValidLocalIp, "InvalidLocalIp", "", "TypeLocalIp"],
+            self.__WorkModes["lip4"]: [self.IsValidLocalIp4, "InvalidLocalIp", "V4", "TypeLocalIp4"],
+            self.__WorkModes["lip6"]: [self.IsValidLocalIp6, "InvalidLocalIp", "V6", "TypeLocalIp6"],
+        }
+
+        # set the parameters with the individual functions
         self.__UserPars = UserPars
-        self.__UserModes = UserModes        # pylint: disable=unused-private-member     # Not implemented
+        self.__UserModes = UserModes  # pylint: disable=unused-private-member     # Not implemented
         self.SetDesc(Desc)
-        self.SetUserKeys(UserPars = UserPars,UserModes = UserModes)
+        self.SetUserKeys(UserPars=UserPars, UserModes=UserModes)
         self.SetDef(Def)
         self.SetArgs(Args)
         self.SetChk(Chk)
         self.SetAllParams(AllParams)
         self.SetAddPar(AddPar)
-        if Children is None:            # fix issue if Children is None
+        if Children is None:  # fix issue if Children is None
             Children = {}
         for wPrefix, wDict in Children.items():
             TheFullPrefix = self.FullPrefix
             # Prefix (=Name) must be a string and not empty
             if not isinstance(wPrefix, str):
-                raise self.DeclarationError(f"{TheFullPrefix}: Name of child '{wPrefix} is not a string") # ChildNameNoStr
+                raise self.DeclarationError(f"{TheFullPrefix}: Name of child '{wPrefix} is not a string")  # ChildNameNoStr
             wPrefix = wPrefix.strip()
-            if wPrefix == '':
-                raise self.DeclarationError(f"{TheFullPrefix}: Name of child could not be blank")   # ChildNameBlank
+            if wPrefix == "":
+                raise self.DeclarationError(f"{TheFullPrefix}: Name of child could not be blank")  # ChildNameBlank
 
             # the declaration of a child has to bee a dictionary
             if not isinstance(wDict, dict):
                 raise self.DeclarationError(f"{self.FullPrefix}: Child definition for '{wPrefix} is not a dictionary")
 
             # the declaration of a child needs at least a 'Def' entry whitch is a dictionary
-            if 'Def' not in wDict:
+            if "Def" not in wDict:
                 raise self.DeclarationError(f"{self.FullPrefix}: Child definition for '{wPrefix} does not include 'Def'")
-            if not isinstance(wDict['Def'], dict):
+            if not isinstance(wDict["Def"], dict):
                 raise self.DeclarationError(f"{self.FullPrefix}: 'Def' in child definition for '{wPrefix} is not a dictionary")
 
             # if 'Children' not given set it to an empty dictionary
-            if 'Children' not in wDict:
-                wDict['Children'] = {}
-            if wDict ['Children'] is None:
-                wDict['Children'] = {}
+            if "Children" not in wDict:
+                wDict["Children"] = {}
+            if wDict["Children"] is None:
+                wDict["Children"] = {}
 
             # the declaration of "Children" has to bee a dictionary
-            if not isinstance(wDict['Children'], dict):
+            if not isinstance(wDict["Children"], dict):
                 raise self.DeclarationError(f"{self.FullPrefix}: 'Children' in child definition for '{wPrefix} is not a dictionary")
 
             # if 'Desc' not given set it to ''
-            if 'Desc' not in wDict:
-                wDict['Desc'] = ''
+            if "Desc" not in wDict:
+                wDict["Desc"] = ""
 
             # the declaration of "Desc" has to bee a string
-            if not isinstance(wDict['Desc'], str):
+            if not isinstance(wDict["Desc"], str):
                 raise self.DeclarationError(f"{self.FullPrefix}: 'Desc' in child definition for '{wPrefix} is not a string")
 
             # if 'AddPar' not given set it to ''
-            if 'AddPar' not in wDict:
-                wDict['AddPar'] = ''
+            if "AddPar" not in wDict:
+                wDict["AddPar"] = ""
 
             # the declaration of "AddPar" has to bee a string
-            if not isinstance(wDict['AddPar'], str):
+            if not isinstance(wDict["AddPar"], str):
                 raise self.DeclarationError(f"{self.FullPrefix}: 'AddPar' in child definition for '{wPrefix} is not a string")
 
             # now add all the children (if necessary also recursive)
-            self.AddChild(Prefix = wPrefix,             # pylint: disable=too-many-function-args
-                          Def = wDict['Def'],
-                          Children = wDict['Children'],
-                          Description = wDict['Desc'],
-                          Version = self.__Version,
-                          License = self.__License,
-                          AddPar = wDict['AddPar'])
+            self.AddChild(
+                Prefix=wPrefix,  # pylint: disable=too-many-function-args
+                Def=wDict["Def"],
+                Children=wDict["Children"],
+                Description=wDict["Desc"],
+                Version=self.__Version,
+                License=self.__License,
+                AddPar=wDict["AddPar"],
+            )
 
-        self.SetTranslation(translation,_Child)
+        self.SetTranslation(translation, _Child)
 
         # show that we need preparation
         self.__IsPrepared = False
 
-    def SetTranslation(self,translation:dict, IsChild:bool = False) -> None:
+    def SetTranslation(self, translation: dict, IsChild: bool = False) -> None:
         """
         Seta net translation-table
 
@@ -1747,7 +1616,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         if IsChild:
             if self.__Parent is not None:
-                self._Translation = self.__Parent._Translation                  # pylint: disable=protected-access
+                self._Translation = self.__Parent._Translation  # pylint: disable=protected-access
         else:
             self._Translation = copy.deepcopy(self._InitTranslation)
 
@@ -1763,8 +1632,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     except KeyError:
                         self._Translation[k] = InitVal
         for c in self.__Children.values():
-            c.SetTranslation(translation,True)
-
+            c.SetTranslation(translation, True)
 
     def _PrintInitTranslation(self):
         """
@@ -1782,13 +1650,12 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         print(pprint.pformat(self._Translation, indent=4, width=200))
 
-
-#
-#---------------------------------------------
-# Make the class look like a dictionary
-# but this dictionary also includes all keys
-# of all the parents
-#---------------------------------------------
+    #
+    # ---------------------------------------------
+    # Make the class look like a dictionary
+    # but this dictionary also includes all keys
+    # of all the parents
+    # ---------------------------------------------
 
     def __len__(self):
         """
@@ -1816,7 +1683,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             return True
         if self.__Parent is None:
             return False
-        return item in self.__Parent                        # Weiss ich besser: Parent is dict!  # pylint: disable=unsupported-membership-test
+        return item in self.__Parent  # Weiss ich besser: Parent is dict!  # pylint: disable=unsupported-membership-test
 
     def __getitem__(self, item):
         """
@@ -1829,7 +1696,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             return self.__WorkDict[item]
         return self.__SearchItem(item, True)
 
-    def __SearchItem(self, item, Up:bool = True):
+    def __SearchItem(self, item, Up: bool = True):
         """
         Search for an item
 
@@ -1845,14 +1712,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         if Up:
             if self.__Parent is None:
-                return self.__SearchItem(item,Up=False)
-            return self.__Parent.__SearchItem(item,Up)                  # pylint: disable=protected-access
+                return self.__SearchItem(item, Up=False)
+            return self.__Parent.__SearchItem(item, Up)  # pylint: disable=protected-access
         else:
             if item in self.__WorkDict:
                 return self.__WorkDict[item]
             for c in self.__Children.values():
                 try:
-                    return c.__SearchItem(item,Up)                  # pylint: disable=protected-access
+                    return c.__SearchItem(item, Up)  # pylint: disable=protected-access
                 except KeyError:
                     pass
             raise KeyError(item)
@@ -1890,7 +1757,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         if self.__Parent is None:
             raise KeyError(key)
-        return self.__Parent[key]                       # Ich weiss das besser! # pylint: disable=unsupported-membership-test,unsubscriptable-object
+        return self.__Parent[key]  # Ich weiss das besser! # pylint: disable=unsupported-membership-test,unsubscriptable-object
 
     def __get__(self, instance, owner):
         """
@@ -1923,7 +1790,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         else:
             return chain(self.__Parent.__iter__(), self.__iter__())
 
-    def IsOwnKey(self,key: str) -> bool:
+    def IsOwnKey(self, key: str) -> bool:
         """
         Check if the key is from the own optionset
 
@@ -1984,22 +1851,23 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         else:
             try:
                 p = dict(self.__Parent.items())
-            except:                           # pylint: disable=bare-except
+            except:  # pylint: disable=bare-except
                 p = {}
             r = {}
-            for key,value in p.items():
+            for key, value in p.items():
                 r[key] = value
-            for key,value in self.__WorkDict.items():
+            for key, value in self.__WorkDict.items():
                 r[key] = value
             Res = []
-            for key,value in r.items():
-                Res.append( (key, value))
+            for key, value in r.items():
+                Res.append((key, value))
         Res.sort()
         return Res
-#---------------------------------------------
-# END Make the class look like a dictionary
-#---------------------------------------------
-#
+
+    # ---------------------------------------------
+    # END Make the class look like a dictionary
+    # ---------------------------------------------
+    #
     @property
     def OwnIpAddresses(self) -> list:
         """
@@ -2011,22 +1879,21 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
 
         # The global addresses ar always availlable
-        Res = ['0.0.0.0', '::']
-        for ifaceName in interfaces():                      # All interfaces
-            for ifa in ifaddresses(ifaceName).values():     # All interfaceaddresses
-                for n in ifa:                               # All address-entries
-                    if 'addr' in n:                         # if the addr field is available
+        Res = ["0.0.0.0", "::"]
+        for ifaceName in interfaces():  # All interfaces
+            for ifa in ifaddresses(ifaceName).values():  # All interfaceaddresses
+                for n in ifa:  # All address-entries
+                    if "addr" in n:  # if the addr field is available
                         try:
-                            ip = self.IsValidIp(n['addr'])       # Test address (and strip all unneccassary parts)
-                            if ip is not None:              # if valid
-                                if ip not in Res:           # not already in list
-                                    Res.append(ip)          # append to list
+                            ip = self.IsValidIp(n["addr"])  # Test address (and strip all unneccassary parts)
+                            if ip is not None:  # if valid
+                                if ip not in Res:  # not already in list
+                                    Res.append(ip)  # append to list
                         except ValueError:
-                            pass                            # there are entries that do not match a stream address -> ignore!
+                            pass  # there are entries that do not match a stream address -> ignore!
         return Res
 
-
-    def IsValidLocalIp4(self,Ip: str) -> Union[str, None]:
+    def IsValidLocalIp4(self, Ip: str) -> Union[str, None]:
         """
         Test if this Ip (or DNS-name) is on this computer
 
@@ -2042,7 +1909,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             return wIp
         return None
 
-    def IsValidLocalIp6(self,Ip: str) -> Union[str, None]:
+    def IsValidLocalIp6(self, Ip: str) -> Union[str, None]:
         """
         Test if this IV6 (or DNS-name) is on this computer
 
@@ -2058,7 +1925,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             return wIp
         return None
 
-    def IsValidLocalIp(self,Ip: str) -> Union[str, None]:
+    def IsValidLocalIp(self, Ip: str) -> Union[str, None]:
         """
         Test if this IPV4 or IPV6 (or DNS-name) is on this computer
 
@@ -2074,9 +1941,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             return wIp
         return None
 
-
-
-    def IsValidIp4(self,Ip: str) -> Union[str, None]:
+    def IsValidIp4(self, Ip: str) -> Union[str, None]:
         """
         Test if this Ip (or DNS-name) is a valid IPV4 address
 
@@ -2086,13 +1951,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :rtype: Union[str, None]
         """
         try:
-            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET, type=socket.SOCK_STREAM)[0][4][0]          # pylint: disable=unsubscriptable-object
+            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET, type=socket.SOCK_STREAM)[0][4][
+                0
+            ]  # pylint: disable=unsubscriptable-object
         except (socket.gaierror, IndexError):
             return None
         return wIp
 
-
-    def IsValidIp6(self,Ip: str) -> Union[str, None]:
+    def IsValidIp6(self, Ip: str) -> Union[str, None]:
         """
         Test if this Ip (or DNS-name) is a valid IPV6 address
 
@@ -2102,12 +1968,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :rtype: Union[str, None]
         """
         try:
-            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET6, type=socket.SOCK_STREAM)[0][4][0]          # pylint: disable=unsubscriptable-object
+            wIp = socket.getaddrinfo(Ip, None, family=socket.AF_INET6, type=socket.SOCK_STREAM)[0][4][
+                0
+            ]  # pylint: disable=unsubscriptable-object
         except (socket.gaierror, IndexError):
             return None
         return wIp
 
-    def IsValidIp(self,Ip: str) -> Union[str, None]:
+    def IsValidIp(self, Ip: str) -> Union[str, None]:
         """
         Test if this Ip (or DNS-name) is a valid IP address (either IPV4 or IPV6)
 
@@ -2131,14 +1999,16 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         return self.__Children
 
-    def AddChild(self,                           # pylint: disable=dangerous-default-value,redefined-outer-name
-                 Prefix: str,
-                 Def: dict = {},
-                 Description: str = '',
-                 Children: dict = {},
-                 Version:str = '',               # pylint: disable=redefined-outer-name
-                 License:list = [''],
-                 AddPar: str = '') -> None:
+    def AddChild(
+        self,  # pylint: disable=dangerous-default-value,redefined-outer-name
+        Prefix: str,
+        Def: dict = {},
+        Description: str = "",
+        Children: dict = {},
+        Version: str = "",  # pylint: disable=redefined-outer-name
+        License: list = [""],
+        AddPar: str = "",
+    ) -> None:
         """
         Add a child to a instance
 
@@ -2162,24 +2032,26 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if p == GLOBAL_NAME:
             raise self.DeclarationError(f"{self.FullPrefix}: Prefix '{p}' is {GLOBAL_NAME} -> invalid!")
         # self.__Children[p] = self.__class__( Def = Def,
-        self.__Children[p] = Param( Def = Def,
-                                    Args = self.__Argumente,
-                                    # Translate = self.__DoTranslate,
-                                    UserPars = self.__UserPars,
-                                    Desc = Description,
-                                    Children = Children,
-                                    AddPar = AddPar,
-                                    AllParams = self.__AllParams,
-                                    _Child = True,
-                                    HelpType = self.__HelpType,
-                                    Version = Version,
-                                    License = License,
-                                    ShowPrefixOnHelp=self.__ShowPrefixOnHelp,
-                                    ErrorOnUnknown = False          # always False for children
-                                    )
-        self.__Children[p].__Parent = self                          # pylint: disable=protected-access
-        self.__Children[p].__Prefix = p                             # pylint: disable=protected-access
-        self.__Children[p]._Translation = self._Translation         # pylint: disable=protected-access
+        self.__Children[p] = Param(
+            Def=Def,
+            Args=self.__Argumente,
+            # Translate = self.__DoTranslate,
+            UserPars=self.__UserPars,
+            Desc=Description,
+            Children=Children,
+            AddPar=AddPar,
+            AllParams=self.__AllParams,
+            _Child=True,
+            HelpType=self.__HelpType,
+            Version=Version,
+            License=License,
+            ShowPrefixOnHelp=self.__ShowPrefixOnHelp,
+            ShowConfigName=self.__ShowConfigName,
+            ErrorOnUnknown=False,  # always False for children
+        )
+        self.__Children[p].__Parent = self  # pylint: disable=protected-access
+        self.__Children[p].__Prefix = p  # pylint: disable=protected-access
+        self.__Children[p]._Translation = self._Translation  # pylint: disable=protected-access
 
     def SetAllParams(self, AllParams: bool = True) -> None:
         """
@@ -2191,10 +2063,9 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :type AllParams: bool, optional
         """
         self.__AllParams = AllParams
-        self.__IsPrepared = False   # we need a Prepare-call after this
+        self.__IsPrepared = False  # we need a Prepare-call after this
 
-
-    def SetDef(self, Def: dict = {}) -> None:                           # pylint: disable=dangerous-default-value
+    def SetDef(self, Def: dict = {}) -> None:  # pylint: disable=dangerous-default-value
         """
         Set the definition for processing arguments
 
@@ -2279,7 +2150,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             self.__Definition = Def
         else:
             raise TypeError(f"{self.FullPrefix}: Def is not a dict")
-        self.__IsPrepared = False   # we need a Prepare-call after this
+        self.__IsPrepared = False  # we need a Prepare-call after this
 
     @property
     def Definition(self) -> dict:
@@ -2302,10 +2173,9 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :rtype: str
         """
         Erg = self.Parents
-        if Erg != '':
-            Erg += '.'
+        if Erg != "":
+            Erg += "."
         return Erg + self.__Prefix
-
 
     @property
     def PartPrefix(self) -> str:
@@ -2317,7 +2187,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :return: full qualified prefix of this instance without root prefix
         :rtype: str
         """
-        return self.FullPrefix.replace(GLOBAL_NAME + '.','')
+        return self.FullPrefix.replace(GLOBAL_NAME + ".", "")
 
     @property
     def Parents(self) -> str:
@@ -2329,13 +2199,13 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :return: full qualified parents of this instance
         :rtype: str
         """
-        Erg = ''
+        Erg = ""
         if self.__Parent is None:
-            return ''
+            return ""
         Erg = self.__Parent.Parents
-        if Erg != '':
-            Erg += '.'
-        Erg += self.__Parent.__Prefix                           # pylint: disable=protected-access
+        if Erg != "":
+            Erg += "."
+        Erg += self.__Parent.__Prefix  # pylint: disable=protected-access
         return Erg
 
     def GetCmdPar(self, Entry: str, dotted: bool = False, parents: bool = False) -> str:
@@ -2359,38 +2229,38 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         except KeyError:
             if parents:
                 if self.__Parent is None:
-                    return ''
-                return self.__Parent.GetCmdPar(Entry = Entry, dotted = dotted, parents = parents)
-            return ''
+                    return ""
+                return self.__Parent.GetCmdPar(Entry=Entry, dotted=dotted, parents=parents)
+            return ""
         try:
-            wText = SingleDef[self.__WorkPars['shortpar']]
+            wText = SingleDef[self.__WorkPars["shortpar"]]
             for w in wText:
-                if Erg != '':
-                    Erg += ', '
+                if Erg != "":
+                    Erg += ", "
                 Erg += "-" + w
         except KeyError:
             pass
         if dotted:
-            Lp = '[' + self.__Prefix +'.]'
+            Lp = "[" + self.__Prefix + ".]"
         else:
-            Lp = ''
+            Lp = ""
         try:
-            wText = SingleDef[self.__WorkPars['longpar']]
+            wText = SingleDef[self.__WorkPars["longpar"]]
             if isinstance(wText, (list, tuple)):
                 for w in wText:
-                    if Erg != '':
-                        Erg += ', '
+                    if Erg != "":
+                        Erg += ", "
                     Erg += "--" + Lp + w
             elif isinstance(wText, str):
-                if Erg != '':
-                    Erg += ', '
+                if Erg != "":
+                    Erg += ", "
                 Erg += "--" + Lp + wText
         except KeyError:
             pass
-        if Erg == '':
+        if Erg == "":
             if parents:
                 if self.__Parent is not None:
-                    Erg = self.__Parent.GetCmdPar(Entry = Entry, dotted = dotted, parents = parents)
+                    Erg = self.__Parent.GetCmdPar(Entry=Entry, dotted=dotted, parents=parents)
         return Erg
 
     def SetUserKeys(self, UserPars: Optional[dict] = None, UserModes: Optional[dict] = None) -> None:
@@ -2420,38 +2290,44 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         if UserPars is not None:
             if not isinstance(UserPars, dict):
-                raise TypeError(f'{self.FullPrefix}: UserPars is not a dict')
+                raise TypeError(f"{self.FullPrefix}: UserPars is not a dict")
             for k in UserPars.keys():
                 if not k in self.__WorkPars:
-                    raise self.DeclarationError(f"{self.FullPrefix}: UserPars {k} is invalid. Valid values are {self.__WorkPars.keys()}")
+                    raise self.DeclarationError(
+                        f"{self.FullPrefix}: UserPars {k} is invalid. Valid values are {self.__WorkPars.keys()}"
+                    )
                 v = UserPars[k]
                 if not isinstance(v, str):
                     raise TypeError(f"{self.FullPrefix}: Value of UserPars {k} is not a string")
                 self.__WorkPars[k] = v
             Double = self.__CheckMulti(self.__WorkPars)
             if Double:
-                raise self.DeclarationError(f"{self.FullPrefix}: UserPars {Double} have the same value {self.__WorkPars[Double[0]]}")
+                raise self.DeclarationError(
+                    f"{self.FullPrefix}: UserPars {Double} have the same value {self.__WorkPars[Double[0]]}"
+                )
 
         if UserModes is not None:
             if not isinstance(UserModes, dict):
-                raise TypeError(f'{self.FullPrefix}: UserModes is not a dict')
+                raise TypeError(f"{self.FullPrefix}: UserModes is not a dict")
             for k in UserModes.keys():
                 if not k in self.__WorkModes:
-                    raise self.DeclarationError(f"{self.FullPrefix}: UserModes {k} is invalid. Valid values are {self.__WorkModes.keys()}")
+                    raise self.DeclarationError(
+                        f"{self.FullPrefix}: UserModes {k} is invalid. Valid values are {self.__WorkModes.keys()}"
+                    )
                 v = UserModes[k]
                 if not isinstance(v, str):
                     raise TypeError(f"{self.FullPrefix}: Value of UserModes {k} is not a string")
                 self.__WorkModes[k] = v
             Double = self.__CheckMulti(self.__WorkModes)
             if Double:
-                raise self.DeclarationError(f"{self.FullPrefix}: UserModes {Double} have the same value {self.__WorkModes[Double[0]]}")
-
+                raise self.DeclarationError(
+                    f"{self.FullPrefix}: UserModes {Double} have the same value {self.__WorkModes[Double[0]]}"
+                )
 
     def __CheckMulti(self, wDict: dict) -> list:
-        return [k for k,v in wDict.items() if list(wDict.values()).count(v)!=1]
+        return [k for k, v in wDict.items() if list(wDict.values()).count(v) != 1]
 
-
-    def SetArgs(self, Args:Optional[Union[list, tuple]] = None) -> None:
+    def SetArgs(self, Args: Optional[Union[list, tuple]] = None) -> None:
         """
         Set the argument list to process
 
@@ -2464,12 +2340,11 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         elif isinstance(Args, (list, tuple)):
             self.__Argumente = Args
         else:
-            raise TypeError(f'{self.FullPrefix}: Args is not a list or tuple')
+            raise TypeError(f"{self.FullPrefix}: Args is not a list or tuple")
         for c in self.__Children.values():
             c.SetArgs(Args)
 
-
-    def SetChk(self, Chk = None):
+    def SetChk(self, Chk=None):
         """
         Set the check-function. Not implementet now
 
@@ -2478,20 +2353,20 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :raises TypeError: if function is not of the proper type
         """
         if Chk is None:
-            self.__ChkFunc = Chk                # pylint: disable=unused-private-member
+            self.__ChkFunc = Chk  # pylint: disable=unused-private-member
         else:
             if isinstance(Chk, types.FunctionType):
                 a = inspect.getfullargspec(Chk).args
                 if len(a) != 2:
-                    raise TypeError(f'{self.FullPrefix}: Check function does not take 2 arguments')
-                self.__ChkFunc = Chk                # pylint: disable=unused-private-member
+                    raise TypeError(f"{self.FullPrefix}: Check function does not take 2 arguments")
+                self.__ChkFunc = Chk  # pylint: disable=unused-private-member
             else:
-                raise TypeError(f'{self.FullPrefix}: Check is not a function')
-        self.__IsPrepared = False   # we need a Prepare-call after this
+                raise TypeError(f"{self.FullPrefix}: Check is not a function")
+        self.__IsPrepared = False  # we need a Prepare-call after this
         for c in self.__Children.values():
             c.SetChk(Chk)
 
-    def SetDesc(self, Desc: str = '') -> None:
+    def SetDesc(self, Desc: str = "") -> None:
         """
         Set the description of the program for usage-string.
 
@@ -2503,8 +2378,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if isinstance(Desc, str):
             self.__Description = Desc
         else:
-            raise TypeError(f'{self.FullPrefix}: Desc is not a string')
-        self.__IsPrepared = False   # we need a Prepare-call after this
+            raise TypeError(f"{self.FullPrefix}: Desc is not a string")
+        self.__IsPrepared = False  # we need a Prepare-call after this
 
     def SetAddPar(self, AddPar: str = "") -> None:
         """
@@ -2520,8 +2395,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if isinstance(AddPar, str):
             self.__AddPar = AddPar
         else:
-            raise TypeError(f'{self.FullPrefix}: AddPar is not a string')
-        self.__IsPrepared = False   # we need a Prepare-call after this
+            raise TypeError(f"{self.FullPrefix}: AddPar is not a string")
+        self.__IsPrepared = False  # we need a Prepare-call after this
 
     def MyProgName(self) -> str:
         """
@@ -2550,7 +2425,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         return self.__MyPwd
 
-    def __GenUsageText(self,ShortLen: int, LongLen: int, IsChild = False) -> None:
+    def __GenUsageText(self, ShortLen: int, LongLen: int, IsChild=False) -> None:
         """
         Generate the "Usage"-text
 
@@ -2571,18 +2446,19 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             ShowType = True
             ShowDef = True
 
-
         if self.__Prefix is None:
-            wPrefText = ''
+            wPrefText = ""
         else:
             if self.__Prefix != GLOBAL_NAME:
-                wPrefText = ''
+                wPrefText = ""
             else:
-                wPrefText = ''
+                wPrefText = ""
         wDesc = self.__Description
-        if wDesc != '':
-            wDesc += '\n'
-        VerText = f"{self._Translation['HelpVersion']}: {self.__Version}\n" if self.__Version != '' and self.__Parent is None else ''
+        if wDesc != "":
+            wDesc += "\n"
+        VerText = (
+            f"{self._Translation['HelpVersion']}: {self.__Version}\n" if self.__Version != "" and self.__Parent is None else ""
+        )
         if IsChild:
             Text = f"{VerText}\n{wDesc}"
         else:
@@ -2595,34 +2471,35 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             Ut_Default = Single[4]
             Ut_Low = Single[6]
             Ut_High = Single[7]
-
+            Ut_ParName = Single[8]
+            Ut_HasConfig = Single[9]
             if Ut_Low is None and Ut_High is None:
-                LimitText = ''
+                LimitText = ""
             if Ut_Low is None and Ut_High is not None:
-                if isinstance(Ut_High,str):
+                if isinstance(Ut_High, str):
                     h = "'" + Ut_High + "'"
                 else:
                     h = str(Ut_High)
                 LimitText = f"(... {h})"
             if Ut_Low is not None and Ut_High is None:
-                if isinstance(Ut_Low,str):
+                if isinstance(Ut_Low, str):
                     l = "'" + Ut_Low + "'"
                 else:
                     l = str(Ut_Low)
                 LimitText = f"({l} ...)"
             if Ut_Low is not None and Ut_High is not None:
-                if isinstance(Ut_High,str):
+                if isinstance(Ut_High, str):
                     h = "'" + Ut_High + "'"
                 else:
                     h = str(Ut_High)
-                if isinstance(Ut_Low,str):
+                if isinstance(Ut_Low, str):
                     l = "'" + Ut_Low + "'"
                 else:
                     l = str(Ut_Low)
                 LimitText = f"({str(l)} ... {h})"
             if ShowType:
-                if LimitText != '':
-                    LimitText = ' ' + LimitText
+                if LimitText != "":
+                    LimitText = " " + LimitText
 
             if not ShowDef:
                 # if Ut_Default == '' or Ut_Default == 0 or not Ut_Default:
@@ -2631,34 +2508,37 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 Ut_Default = LimitText
             else:
 
-                if isinstance(Ut_Default,str):
+                if isinstance(Ut_Default, str):
                     d = "'" + Ut_Default + "'"
                 else:
                     d = str(Ut_Default)
-                if LimitText == '':
+                if LimitText == "":
                     Ut_Default = f"{self._Translation['HelpDefault']}: {d}"
                 else:
                     Ut_Default = f"{LimitText}, {self._Translation['HelpDefault']}: {d}"
             Ut_Text = Single[5].splitlines()
+            if self.__ShowConfigName:
+                if Ut_HasConfig:
+                    Ut_Text.append(f'Config= [{self.__Prefix}] "{Ut_ParName}"')
             sl = ShortLen + 3 + 1
             ll = LongLen + 3 + 2
             if self.__Prefix is not None:
-                if self.__Prefix != '' and self.__Prefix != GLOBAL_NAME:
+                if self.__Prefix != "" and self.__Prefix != GLOBAL_NAME:
                     ll = ll + len(self.__Prefix) + 3
-            Lines = max(len(Ut_Short),len(Ut_Long),len(Ut_Text)+1)
+            Lines = max(len(Ut_Short), len(Ut_Long), len(Ut_Text) + 1)
             while len(Ut_Short) < Lines:
                 Ut_Short.append(" ")
 
             while len(Ut_Long) < Lines:
                 Ut_Long.append(" ")
             if ShowType:
-                if Ut_Default != '':
-                    if not Ut_Default.startswith(' '):
-                        Ut_Default = ' ' + Ut_Default
-                Ut_Text.insert(0,f"Type: {Ut_Type}{Ut_Default}")
+                if Ut_Default != "":
+                    if not Ut_Default.startswith(" "):
+                        Ut_Default = " " + Ut_Default
+                Ut_Text.insert(0, f"Type: {Ut_Type}{Ut_Default}")
             else:
-                if Ut_Default != '':
-                   Ut_Text.insert(0,f"{Ut_Default}")
+                if Ut_Default != "":
+                    Ut_Text.insert(0, f"{Ut_Default}")
             while len(Ut_Text) < Lines:
                 Ut_Text.append(" ")
 
@@ -2667,8 +2547,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 s = Ut_Short[i]
                 l = Ut_Long[i]
                 if self.__Prefix is not None:
-                    if self.__Prefix != '' and self.__Prefix != GLOBAL_NAME and l != " ":
-                        l = '[' + self.__Prefix + '.]' + l
+                    if self.__Prefix != "" and self.__Prefix != GLOBAL_NAME and l != " ":
+                        l = "[" + self.__Prefix + ".]" + l
                 t = Ut_Text[i]
                 if s == " ":
                     n = " " * sl
@@ -2684,14 +2564,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                         n = "--" + l + "="
                 if i == 0:
                     n += Ut_Param
-                n = (n + (" " * (ll + len(Ut_Param) + 2)))[:ll + len(Ut_Param) + 2]
+                n = (n + (" " * (ll + len(Ut_Param) + 2)))[: ll + len(Ut_Param) + 2]
                 wLine += n + t
-                if wLine.strip() != '':
+                if wLine.strip() != "":
                     Text += wLine
             Text += "\n"
         self.__UsageText = Text
 
-    def Usage(self, ShowPrefixHeader:bool = True) -> str:
+    def Usage(self, ShowPrefixHeader: bool = True) -> str:
         """
         Return the helptext
 
@@ -2702,15 +2582,19 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             self.__Prepare()
         Ret = self.__UsageText
         for c in self.__Children.values():
-            Ret += f"""
+            Ret += (
+                f"""
     ------------------------------
     {c.PartPrefix}
     ------------------------------
-""" if ShowPrefixHeader else '\n'
+"""
+                if ShowPrefixHeader
+                else "\n"
+            )
             e = c.Usage(ShowPrefixHeader)
             lines = e.splitlines()
             for l in lines:
-                Ret += '    ' + l + '\n'
+                Ret += "    " + l + "\n"
         return Ret
 
     def __Prepare(self) -> None:
@@ -2738,151 +2622,166 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         self.__MyProgPath = str(Path(sys.argv[0]).parent)
 
         for c in self.__Children.values():
-            if not c.__IsPrepared:                          # pylint: disable=protected-access
-                c.__Prepare()                               # pylint: disable=protected-access
+            if not c.__IsPrepared:  # pylint: disable=protected-access
+                c.__Prepare()  # pylint: disable=protected-access
 
         for ParName in self.__Definition.keys():
             SingleDef = self.__Definition[ParName]
             Ut_Short = []
             Ut_Long = []
-            Ut_Param = ''
-            Ut_Default = ''
-            Ut_Text = ''
-            Ut_Type = ''
+            Ut_Param = ""
+            Ut_Default = ""
+            Ut_Text = ""
+            Ut_Type = ""
+            Ut_HasConfig = True
             Ut_Low = None
             Ut_High = None
             ParKeys = SingleDef.keys()
-            if self.__WorkPars['lowlimit'] in ParKeys:
-                Ut_Low = SingleDef[self.__WorkPars['lowlimit']]
-            if self.__WorkPars['uplimit'] in ParKeys:
-                Ut_High = SingleDef[self.__WorkPars['uplimit']]
+            if self.__WorkPars["lowlimit"] in ParKeys:
+                Ut_Low = SingleDef[self.__WorkPars["lowlimit"]]
+            if self.__WorkPars["uplimit"] in ParKeys:
+                Ut_High = SingleDef[self.__WorkPars["uplimit"]]
 
-            if self.__WorkPars['multiple'] in ParKeys:
-                ParMulti = SingleDef[self.__WorkPars['multiple']]
+            if self.__WorkPars["multiple"] in ParKeys:
+                ParMulti = SingleDef[self.__WorkPars["multiple"]]
             else:
                 ParMulti = False
 
-            if self.__WorkPars['mode'] in ParKeys:
-                ParMode = SingleDef[self.__WorkPars['mode']]
+            if self.__WorkPars["mode"] in ParKeys:
+                ParMode = SingleDef[self.__WorkPars["mode"]]
             else:
                 raise self.DeclarationError(f"{self.FullPrefix}: No mode setting in Def for {ParName}")
-            if ParMode == self.__WorkModes['path']:
-                Ut_Type = self._Translation['TypePath']
-                SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['int']:
-                Ut_Type = self._Translation['TypeInteger']
+            if ParMode == self.__WorkModes["path"]:
+                Ut_Type = self._Translation["TypePath"]
+                SingleDef[self.__WorkPars["needoption"]] = True
+            elif ParMode == self.__WorkModes["int"]:
+                Ut_Type = self._Translation["TypeInteger"]
                 Ut_Default = 0
             elif ParMode in self.__IpModes:
                 Ut_Type = self._Translation[self.__IpModes[ParMode][3]]
-            elif ParMode == self.__WorkModes['bool']:
-                Ut_Type = self._Translation['TypeBool']
+            elif ParMode == self.__WorkModes["bool"]:
+                Ut_Type = self._Translation["TypeBool"]
                 Ut_Default = False
-            elif ParMode == self.__WorkModes['float']:
-                Ut_Type = self._Translation['TypeFloat']
+            elif ParMode == self.__WorkModes["float"]:
+                Ut_Type = self._Translation["TypeFloat"]
                 Ut_Default = 0.0
-            elif ParMode == self.__WorkModes['file']:
-                Ut_Type = self._Translation['TypeFile']
-                SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['dir']:
-                Ut_Type = self._Translation['TypeDir']
-                SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['count']:
-                Ut_Type = self._Translation['TypeCount']
-                if self.__WorkPars['longpar'] in ParKeys:
-                    SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['help']:
-                Ut_Type = self._Translation['TypeHelp']
-            elif ParMode == self.__WorkModes['import']:
-                Ut_Type = self._Translation['TypeImport']
-                SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['export']:
-                Ut_Type = self._Translation['TypeExport']
-            elif ParMode == self.__WorkModes['glob_import']:
+            elif ParMode == self.__WorkModes["file"]:
+                Ut_Type = self._Translation["TypeFile"]
+                SingleDef[self.__WorkPars["needoption"]] = True
+            elif ParMode == self.__WorkModes["dir"]:
+                Ut_Type = self._Translation["TypeDir"]
+                SingleDef[self.__WorkPars["needoption"]] = True
+            elif ParMode == self.__WorkModes["count"]:
+                Ut_Type = self._Translation["TypeCount"]
+                if self.__WorkPars["longpar"] in ParKeys:
+                    SingleDef[self.__WorkPars["needoption"]] = True
+            elif ParMode == self.__WorkModes["help"]:
+                Ut_Type = self._Translation["TypeHelp"]
+                Ut_HasConfig = False
+            elif ParMode == self.__WorkModes["import"]:
+                Ut_Type = self._Translation["TypeImport"]
+                SingleDef[self.__WorkPars["needoption"]] = True
+                Ut_HasConfig = False
+            elif ParMode == self.__WorkModes["export"]:
+                Ut_Type = self._Translation["TypeExport"]
+                Ut_HasConfig = False
+            elif ParMode == self.__WorkModes["glob_import"]:
                 if self.__Parent is not None:
                     raise self.DeclarationError(f"{self.FullPrefix}: {ParName} is invalid in child definition")
-                Ut_Type = self._Translation['TypeGlobImport']
-                SingleDef[self.__WorkPars['needoption']] = True
-            elif ParMode == self.__WorkModes['glob_export']:
+                Ut_Type = self._Translation["TypeGlobImport"]
+                SingleDef[self.__WorkPars["needoption"]] = True
+                Ut_HasConfig = False
+            elif ParMode == self.__WorkModes["glob_export"]:
                 if self.__Parent is not None:
                     raise self.DeclarationError(f"{self.FullPrefix}: {ParName} is invalid in child definition")
-                Ut_Type = self._Translation['TypeGlobExport']
+                Ut_Type = self._Translation["TypeGlobExport"]
+                Ut_HasConfig = False
             else:
-                Ut_Type = self._Translation['TypeStr']
+                Ut_Type = self._Translation["TypeStr"]
 
-            if self.__WorkPars['default'] in ParKeys:
-                wMode = SingleDef[self.__WorkPars['mode']]
-                if  wMode != self.__WorkModes['help'] \
-                    and wMode != self.__WorkModes['import'] \
-                    and wMode != self.__WorkModes['export'] \
-                    and wMode != self.__WorkModes['glob_import'] \
-                    and wMode != self.__WorkModes['glob_export']:
+            if self.__WorkPars["default"] in ParKeys:
+                wMode = SingleDef[self.__WorkPars["mode"]]
+                if (
+                    wMode != self.__WorkModes["help"]
+                    and wMode != self.__WorkModes["import"]
+                    and wMode != self.__WorkModes["export"]
+                    and wMode != self.__WorkModes["glob_import"]
+                    and wMode != self.__WorkModes["glob_export"]
+                ):
                     if wMode in self.__IpModes:
-                        DefVal = SingleDef[self.__WorkPars['default']]
+                        DefVal = SingleDef[self.__WorkPars["default"]]
                         wIp = self.__IpModes[wMode][0](DefVal)
                         if wIp is None:
-                            raise self.DeclarationError(f"{self.FullPrefix}: {ParName} default value '{DefVal}' is invalid for this type (IP{self.__IpModes[wMode][2]})")
+                            raise self.DeclarationError(
+                                f"{self.FullPrefix}: {ParName} default value '{DefVal}' is invalid for this type (IP{self.__IpModes[wMode][2]})"
+                            )
                         else:
                             self.__WorkDict[ParName] = wIp
-                    else:    
-                        self.__WorkDict[ParName] = SingleDef[self.__WorkPars['default']]
-                if ParMode == self.__WorkModes['file']:
-                    wText = SingleDef[self.__WorkPars['default']]
+                    else:
+                        self.__WorkDict[ParName] = SingleDef[self.__WorkPars["default"]]
+                if ParMode == self.__WorkModes["file"]:
+                    wText = SingleDef[self.__WorkPars["default"]]
                     try:
                         if wText[0] != "/":
-                            wText = self.__MyPwd + '/' + wText
+                            wText = self.__MyPwd + "/" + wText
                         wFile = Path(wText).absolute()
                         if wFile.is_file():
                             self.__WorkDict[ParName] = str(wFile)
                     except IndexError:
-                        wText = ''
+                        wText = ""
                         self.__WorkDict[ParName] = wText
-                elif ParMode == self.__WorkPars['description']:
-                    wText = SingleDef[self.__WorkPars['default']]
+                elif ParMode == self.__WorkPars["description"]:
+                    wText = SingleDef[self.__WorkPars["default"]]
                     if wText[0] != "/":
-                        wText = self.__MyPwd + '/' + wText
+                        wText = self.__MyPwd + "/" + wText
                     wFile = Path(wText).absolute()
                     if wFile.is_dir():
                         self.__WorkDict[ParName] = str(wFile)
-                elif ParMode == self.__WorkModes['path']:
-                    wText = SingleDef[self.__WorkPars['default']]
+                elif ParMode == self.__WorkModes["path"]:
+                    wText = SingleDef[self.__WorkPars["default"]]
                     if len(wText) > 0:
                         if wText[0] != "/":
-                            wText = self.__MyPwd + '/' + wText
+                            wText = self.__MyPwd + "/" + wText
                         wFile = Path(wText).absolute()
                         self.__WorkDict[ParName] = str(wFile)
                     else:
-                        self.__WorkDict[ParName] = ''
-                Ut_Default = SingleDef[self.__WorkPars['default']]
+                        self.__WorkDict[ParName] = ""
+                Ut_Default = SingleDef[self.__WorkPars["default"]]
             else:
                 if self.__AllParams:
-                    if ParMode == self.__WorkModes['bool']:
+                    if ParMode == self.__WorkModes["bool"]:
                         self.__WorkDict[ParName] = False
-                    elif ParMode == self.__WorkModes['text']:
+                    elif ParMode == self.__WorkModes["text"]:
                         if ParMulti:
                             self.__WorkDict[ParName] = []
                         else:
                             self.__WorkDict[ParName] = ""
-                    elif ParMode == self.__WorkModes['ip'] or ParMode == self.__WorkModes['ip4'] or ParMode == self.__WorkModes['lip'] or ParMode == self.__WorkModes['lip']:
+                    elif (
+                        ParMode == self.__WorkModes["ip"]
+                        or ParMode == self.__WorkModes["ip4"]
+                        or ParMode == self.__WorkModes["lip"]
+                        or ParMode == self.__WorkModes["lip"]
+                    ):
                         if ParMulti:
-                            self.__WorkDict[ParName] = ['0.0.0.0']
+                            self.__WorkDict[ParName] = ["0.0.0.0"]
                         else:
-                            self.__WorkDict[ParName] = '0.0.0.0'
-                    elif ParMode == self.__WorkModes['ip6'] or ParMode == self.__WorkModes['lip6']:
+                            self.__WorkDict[ParName] = "0.0.0.0"
+                    elif ParMode == self.__WorkModes["ip6"] or ParMode == self.__WorkModes["lip6"]:
                         if ParMulti:
-                            self.__WorkDict[ParName] = ['::']
+                            self.__WorkDict[ParName] = ["::"]
                         else:
-                            self.__WorkDict[ParName] = '::'
-                    elif ParMode == self.__WorkModes['int']:
+                            self.__WorkDict[ParName] = "::"
+                    elif ParMode == self.__WorkModes["int"]:
                         if ParMulti:
                             self.__WorkDict[ParName] = []
                         else:
                             self.__WorkDict[ParName] = 0
-                    elif ParMode == self.__WorkModes['float']:
+                    elif ParMode == self.__WorkModes["float"]:
                         if ParMulti:
                             self.__WorkDict[ParName] = []
                         else:
-                            self.__WorkDict[ParName] = 0.
-                    elif ParMode == self.__WorkModes['count']:
+                            self.__WorkDict[ParName] = 0.0
+                    elif ParMode == self.__WorkModes["count"]:
                         self.__WorkDict[ParName] = 0
                     else:
                         if ParMode not in self.__SpecialOpts:
@@ -2891,27 +2790,27 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                             else:
                                 self.__WorkDict[ParName] = None
             NeedOpt = False
-            if self.__WorkPars['needoption'] in ParKeys:
-                if SingleDef[self.__WorkPars['needoption']]:
+            if self.__WorkPars["needoption"] in ParKeys:
+                if SingleDef[self.__WorkPars["needoption"]]:
                     NeedOpt = True
-                    Ut_Param = self._Translation['HelpValue']
+                    Ut_Param = self._Translation["HelpValue"]
                 else:
-                    Ut_Param = ' ' * len(self._Translation['HelpValue'])
+                    Ut_Param = " " * len(self._Translation["HelpValue"])
             else:
-                Ut_Param = ' ' * len(self._Translation['HelpValue'])
-            if self.__WorkPars['longpar'] in ParKeys:
-                wText = SingleDef[self.__WorkPars['longpar']]
+                Ut_Param = " " * len(self._Translation["HelpValue"])
+            if self.__WorkPars["longpar"] in ParKeys:
+                wText = SingleDef[self.__WorkPars["longpar"]]
                 if isinstance(wText, (list, tuple)):
                     for ws in wText:
                         if not isinstance(ws, str):
                             raise self.DeclarationError(f"{self.FullPrefix}: One of the long values for {ParName} is not a string")
                         l = len(ws)
-                        if '--' + ws in self.__ParDict.keys():          # pylint: disable=consider-iterating-dictionary
+                        if "--" + ws in self.__ParDict.keys():  # pylint: disable=consider-iterating-dictionary
                             raise self.DeclarationError(f"{self.FullPrefix}: Double long value for {ParName}: {ws}")
-                        self.__ParDict['--' + ws] = ParName
+                        self.__ParDict["--" + ws] = ParName
                         for ListPar, ListVal in self.__ModeToList.items():
                             if ParMode == ListPar:
-                                ListVal.append('--' + ws)
+                                ListVal.append("--" + ws)
 
                         Ut_Long.append(ws)
                         if NeedOpt:
@@ -2923,12 +2822,12 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 elif not isinstance(wText, str):
                     raise self.DeclarationError(f"{self.FullPrefix}: Long value for {ParName} is not a string")
                 else:
-                    if '--' + wText in self.__ParDict.keys():          # pylint: disable=consider-iterating-dictionary
+                    if "--" + wText in self.__ParDict.keys():  # pylint: disable=consider-iterating-dictionary
                         raise self.DeclarationError(f"{self.FullPrefix}: Double long value for {ParName}: {wText}")
-                    self.__ParDict['--' + wText] = ParName
+                    self.__ParDict["--" + wText] = ParName
                     for ListPar, ListVal in self.__ModeToList.items():
                         if ParMode == ListPar:
-                            ListVal.append('--' + wText)
+                            ListVal.append("--" + wText)
                     Ut_Long.append(wText)
                     l = len(wText)
                     if NeedOpt:
@@ -2937,19 +2836,19 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                         self.__LongList.append(wText)
                     if l > LongParLen:
                         LongParLen = l
-            if self.__WorkPars['shortpar'] in ParKeys:
-                wText = SingleDef[self.__WorkPars['shortpar']]
+            if self.__WorkPars["shortpar"] in ParKeys:
+                wText = SingleDef[self.__WorkPars["shortpar"]]
                 if isinstance(wText, (list, tuple)):
                     for ws in wText:
                         if not isinstance(ws, str):
                             raise self.DeclarationError(f"{self.FullPrefix}: One of the short values for {ParName} is not a string")
                         for c in ws:
-                            if '-' + c in self.__ParDict.keys():          # pylint: disable=consider-iterating-dictionary
+                            if "-" + c in self.__ParDict.keys():  # pylint: disable=consider-iterating-dictionary
                                 raise self.DeclarationError(f"{self.FullPrefix}: Double short value for {ParName}: {c}")
-                            self.__ParDict['-' + c] = ParName
+                            self.__ParDict["-" + c] = ParName
                             for ListPar, ListVal in self.__ModeToList.items():
                                 if ParMode == ListPar:
-                                    ListVal.append('-' + c)
+                                    ListVal.append("-" + c)
 
                             Ut_Short.append(c)
                             rEntry = c
@@ -2962,48 +2861,59 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     raise self.DeclarationError(f"{self.FullPrefix}: Short value for {ParName} is not a string")
                 else:
                     for c in wText:
-                        if '-' + c in self.__ParDict.keys():          # pylint: disable=consider-iterating-dictionary
+                        if "-" + c in self.__ParDict.keys():  # pylint: disable=consider-iterating-dictionary
                             raise self.DeclarationError(f"{self.FullPrefix}: Double short value for {ParName}: {c}")
-                        self.__ParDict['-' + c] = ParName
+                        self.__ParDict["-" + c] = ParName
                         for ListPar, ListVal in self.__ModeToList.items():
                             if ParMode == ListPar:
-                                ListVal.append('-' + c)
+                                ListVal.append("-" + c)
                         Ut_Short.append(c)
                         rEntry = c
                         self.__ShortStr += c
                         if NeedOpt:
-                            if SingleDef[self.__WorkPars['mode']] != self.__WorkModes['count']:
+                            if SingleDef[self.__WorkPars["mode"]] != self.__WorkModes["count"]:
                                 self.__ShortStr += ":"
                                 rEntry += ":"
                         self.__ShortList.append(rEntry)
                 if ShortParLen == 0:
                     ShortParLen = 1
-            if self.__WorkPars['description'] in ParKeys:
-                Ut_Text = SingleDef[self.__WorkPars['description']]
-            self.__UsageTextList.append( [Ut_Short,Ut_Long,Ut_Param,Ut_Type,Ut_Default,Ut_Text,Ut_Low,Ut_High] )
+            if self.__WorkPars["description"] in ParKeys:
+                Ut_Text = SingleDef[self.__WorkPars["description"]]
+            self.__UsageTextList.append(
+                [
+                    Ut_Short,
+                    Ut_Long,
+                    Ut_Param,
+                    Ut_Type,
+                    Ut_Default,
+                    Ut_Text,
+                    Ut_Low,
+                    Ut_High,
+                    ParName,
+                    Ut_HasConfig,
+                ]
+            )
         IsChild = True
         if self.__Parent is None:
             IsChild = False
-        self.__GenUsageText(ShortParLen,LongParLen,IsChild=IsChild)
+        self.__GenUsageText(ShortParLen, LongParLen, IsChild=IsChild)
         self.__IsPrepared = True
 
-
-
-    def __Make_OptName(self,OptionNameIn:str):
-        OptionName:str = OptionNameIn
+    def __Make_OptName(self, OptionNameIn: str):
+        OptionName: str = OptionNameIn
         LongOptStr = OptionNameIn
-        RemStr = ''
-        if OptionName.startswith('--'):
-            if '.' in OptionName:
-                if '=' in OptionName:
-                    w = OptionName.split('=',1)
+        RemStr = ""
+        if OptionName.startswith("--"):
+            if "." in OptionName:
+                if "=" in OptionName:
+                    w = OptionName.split("=", 1)
                     OptionName = w[0]
-                    RemStr = '=' + w[1]
-                wList = OptionName[2:].split('.')
+                    RemStr = "=" + w[1]
+                wList = OptionName[2:].split(".")
                 if len(wList) != 2:
                     raise self.ParamError(f"Error in prefixed parameter {OptionName}") from None
                 if wList[0] == self.__Prefix:
-                    LongOptStr = '--' + wList[1] + RemStr
+                    LongOptStr = "--" + wList[1] + RemStr
         return LongOptStr
 
     def Process(self) -> bool:
@@ -3027,16 +2937,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if len(self.UnusedArgs) > 0:
             if self.__ErrorOnUnknown:
                 # OptStr = ', '.join(self.UnusedArgs)
-                OptStr = ', '.join(["'" + x + "'" for x in self.UnusedArgs])
+                OptStr = ", ".join(["'" + x + "'" for x in self.UnusedArgs])
                 if len(self.UnusedArgs) > 1:
-                    raise self.ParamError(self._Translation['UndefinedOptionMultiple'].format(
-                            **{'OptStr':OptStr})) from None
+                    raise self.ParamError(self._Translation["UndefinedOptionMultiple"].format(**{"OptStr": OptStr})) from None
                 else:
-                    raise self.ParamError(self._Translation['UndefinedOptionSingle'].format(
-                            **{'OptStr':OptStr})) from None
+                    raise self.ParamError(self._Translation["UndefinedOptionSingle"].format(**{"OptStr": OptStr})) from None
         return Erg
 
-    def __Process(self,IsFirst:bool) -> bool:
+    def __Process(self, IsFirst: bool) -> bool:
         """
         Process the runtime-arguments.
 
@@ -3060,20 +2968,19 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if not IsFirst:
             Erg = False
             for c in self.__Children.values():
-                if c.__Process(IsFirst):                # pylint: disable=W0212
+                if c.__Process(IsFirst):  # pylint: disable=W0212
                     Erg = True
-
 
         if not self.__IsPrepared:
             self.__Prepare()
         PreList = []
         for wPar in self.__Argumente[1:]:
-            if wPar[0:2] == '--':
+            if wPar[0:2] == "--":
                 xPar = wPar[2:]
-                if '=' in xPar:
-                    xPar = xPar.split('=',1)[0]
-                if '.' in xPar:
-                    xPre = wPar[2:].split('.')[0]
+                if "=" in xPar:
+                    xPar = xPar.split("=", 1)[0]
+                if "." in xPar:
+                    xPre = wPar[2:].split(".")[0]
                     if xPre not in PreList:
                         PreList.append(xPre)
         wLongList = []
@@ -3082,7 +2989,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         if len(PreList) > 0:
             for nPre in PreList:
                 for nLong in self.__LongList:
-                    wLongList.append(nPre + '.' + nLong)
+                    wLongList.append(nPre + "." + nLong)
         try:
             opts, args, unused = self._gnu_getopt(self.__Argumente[1:], self.__ShortStr, wLongList, True)
             # opts, args = self._getopt(self.__Argumente[1:], self.__ShortStr, wLongList, True)
@@ -3092,14 +2999,14 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         self.__RemainArgs = args
         self.__UnusedArgs = unused
         if IsFirst:
-# HELP & Licenses
+            # HELP & Licenses
             for OptionName, a in opts:
                 del a
                 OptionName = self.__Make_OptName(OptionName)
                 if OptionName in self.__HelpList:
                     # Hier geben wir die Hilfe aus. print ist hier richtig! Soll auf StdOut gehen
                     if self.__Prefix is not None:
-                        if self.__Prefix != '' and self.__Prefix != GLOBAL_NAME:
+                        if self.__Prefix != "" and self.__Prefix != GLOBAL_NAME:
                             print(f"#{'-'*60}\n# {self.__Prefix}\n#{'-'*60}\n")
                     print(self.Usage(self.__ShowPrefixOnHelp))
                     if self.__Parent is None:
@@ -3109,35 +3016,40 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     print(self.__License[0])
                     return True
                 if OptionName in self.__FullLicenseList:
-                    print('\n'.join(self.__License))
+                    print("\n".join(self.__License))
                     return True
 
-
-# GLOBAL IMPORT
-            for OptionName,OptionPath in opts:
+            # GLOBAL IMPORT
+            for OptionName, OptionPath in opts:
                 OptionName = self.__Make_OptName(OptionName)
                 if OptionName in self.__Glob_ImportList:
                     FullPath = Path(OptionPath).expanduser().resolve()
                     if FullPath.exists():
                         if FullPath.is_file():
                             try:
-                                wGlobDict = JsonLoad(FullPath.open(encoding='utf-8'))
+                                wGlobDict = JsonLoad(FullPath.open(encoding="utf-8"))
                             except Exception as exc:
                                 wMsg = str(exc)
                                 raise self.ParamError(
-
-                                    f"Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}") from None # JsonError
+                                    f"Import failed '{wMsg}' in {OptionPath} ({FullPath}) for parameter {OptionName}"
+                                ) from None  # JsonError
                             self.__AssignImportValues(wGlobDict, FileName=str(FullPath))
                         else:
-                            raise self.ParamError(self._Translation['PathNoFile'].format(
-                        **{'OptionPath':OptionPath, 'OptionName':OptionName, 'FullPath': FullPath})) from None
-                                # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} is not a file") from None # PathNoFile
-                    else:
-                        raise self.ParamError(self._Translation['PathNoFile'].format(
-                        **{'OptionPath':OptionPath, 'OptionName':OptionName, 'FullPath': FullPath})) from None
+                            raise self.ParamError(
+                                self._Translation["PathNoFile"].format(
+                                    **{"OptionPath": OptionPath, "OptionName": OptionName, "FullPath": FullPath}
+                                )
+                            ) from None
                             # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} is not a file") from None # PathNoFile
+                    else:
+                        raise self.ParamError(
+                            self._Translation["PathNoFile"].format(
+                                **{"OptionPath": OptionPath, "OptionName": OptionName, "FullPath": FullPath}
+                            )
+                        ) from None
+                        # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} is not a file") from None # PathNoFile
 
-# IMPORT
+            # IMPORT
             for OptionName, OptionPath in opts:
                 OptionName = self.__Make_OptName(OptionName)
                 if OptionName in self.__ImportList:
@@ -3145,25 +3057,33 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     if FullPath.exists():
                         if FullPath.is_file():
                             try:
-                                wDict = JsonLoad(FullPath.open(encoding='utf-8'))
+                                wDict = JsonLoad(FullPath.open(encoding="utf-8"))
                             except Exception as exc:
                                 wMsg = str(exc)
-                                raise self.ParamError(f"Import failed, {OptionPath} for parameter {OptionPath} is not a valid file") from None # JsonError
-                            for k in self.__WorkDict.keys():                # pylint: disable=consider-iterating-dictionary
+                                raise self.ParamError(
+                                    f"Import failed, {OptionPath} for parameter {OptionPath} is not a valid file"
+                                ) from None  # JsonError
+                            for k in self.__WorkDict.keys():  # pylint: disable=consider-iterating-dictionary
                                 try:
                                     self.__WorkDict[k] = wDict[k]
                                 except KeyError:
                                     pass
                         else:
-                            raise self.ParamError(self._Translation['PathNoFile'].format(
-                        **{'OptionPath':OptionPath, 'OptionName':OptionName, 'FullPath': FullPath})) from None
-                                # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} is not a file") from None # PathNoFile
+                            raise self.ParamError(
+                                self._Translation["PathNoFile"].format(
+                                    **{"OptionPath": OptionPath, "OptionName": OptionName, "FullPath": FullPath}
+                                )
+                            ) from None
+                            # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} is not a file") from None # PathNoFile
                     else:
-                        raise self.ParamError(self._Translation['PathNoFile'].format(
-                        **{'OptionPath':OptionPath, 'OptionName':OptionName, 'FullPath': FullPath})) from None
-                            # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} does not exist") from None # PathNoFile
+                        raise self.ParamError(
+                            self._Translation["PathNoFile"].format(
+                                **{"OptionPath": OptionPath, "OptionName": OptionName, "FullPath": FullPath}
+                            )
+                        ) from None
+                        # f"The path {OptionPath} ({FullPath}) for parameter {OptionName} does not exist") from None # PathNoFile
         else:
-# Other Options
+            # Other Options
             for OptionName, OptionArg in opts:
                 OptionName = self.__Make_OptName(OptionName)
                 if OptionName in self.__HelpList:
@@ -3185,39 +3105,38 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                     wPar = self.__Definition[ParName]
                 except:
                     raise RuntimeError(f"Internal error, option {ParName} not found in Definition") from None
-                if self.__WorkPars['needoption'] in wPar.keys():
-                    if wPar[self.__WorkPars['needoption']]:
-                        Res = self.__CheckOption(ParName,OptionName,wPar,OptionArg)
+                if self.__WorkPars["needoption"] in wPar.keys():
+                    if wPar[self.__WorkPars["needoption"]]:
+                        Res = self.__CheckOption(ParName, OptionName, wPar, OptionArg)
                         if not Res is None:
                             raise self.ParamError(Res) from None
-                        if wPar[self.__WorkPars['mode']] != self.__WorkModes['count']:
+                        if wPar[self.__WorkPars["mode"]] != self.__WorkModes["count"]:
                             continue
-                if wPar[self.__WorkPars['mode']] == self.__WorkModes['bool']:
+                if wPar[self.__WorkPars["mode"]] == self.__WorkModes["bool"]:
                     try:
-                        bVal = wPar[self.__WorkPars['default']]
+                        bVal = wPar[self.__WorkPars["default"]]
                     except KeyError:
                         bVal = False
                     self.__WorkDict[ParName] = not bVal
-                elif wPar[self.__WorkPars['mode']] == self.__WorkModes['count']:
-                    if '--' not in OptionName:
+                elif wPar[self.__WorkPars["mode"]] == self.__WorkModes["count"]:
+                    if "--" not in OptionName:
                         self.__WorkDict[ParName] += 1
                 else:
-                    raise self.ParamError(self._Translation['OptionNotDefined'].format(
-                        **{'OptionName':OptionName}))
-                        # f"No action defined for {OptionName}")
+                    raise self.ParamError(self._Translation["OptionNotDefined"].format(**{"OptionName": OptionName}))
+                    # f"No action defined for {OptionName}")
 
             for OptionName, OptionArg in opts:
                 OptionName = self.__Make_OptName(OptionName)
                 if OptionName in self.__Glob_ExportList:
                     self.__Glob_ExportStr = json.dumps(self.GetExportDict, sort_keys=True, indent=4, cls=self.__PathEncoder)
-                    self.__Glob_ExportStr += '\n'
+                    self.__Glob_ExportStr += "\n"
                     if self.__Parent is None:
                         print(self.__Glob_ExportStr)
                         sys.exit(0)
                     return True
                 if OptionName in self.__ExportList:
                     if self.__Prefix is not None:
-                        if self.__Prefix != '':
+                        if self.__Prefix != "":
                             print(f"//{'-'*60}\n// {self.__Prefix}\n//{'-'*60}\n")
                     print(json.dumps(self.__WorkDict, sort_keys=True, indent=4, cls=self.__PathEncoder))
                     if self.__Parent is None:
@@ -3227,22 +3146,23 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             for DefArgName in self.__Definition.keys():
                 v = self.__Definition[DefArgName]
                 Req = False
-                if self.__WorkPars['required'] in v.keys():
-                    Req = v[self.__WorkPars['required']]
+                if self.__WorkPars["required"] in v.keys():
+                    Req = v[self.__WorkPars["required"]]
                 if Req:
                     if not DefArgName in self.keys():
                         ParList = self.__GetOptList(DefArgName)
-                        raise self.ParamError(self._Translation['OptionRequired'].format(
-                        **{'DefArgName':DefArgName, 'ParList':ParList})) from None
-                            # f"{DefArgName} ({ParList}) required but not given") from None
+                        raise self.ParamError(
+                            self._Translation["OptionRequired"].format(**{"DefArgName": DefArgName, "ParList": ParList})
+                        ) from None
+                        # f"{DefArgName} ({ParList}) required but not given") from None
         if IsFirst:
             Erg = False
             for c in self.__Children.values():
-                if c.__Process(IsFirst):                    # pylint: disable=W0212
+                if c.__Process(IsFirst):  # pylint: disable=W0212
                     Erg = True
         return Erg
 
-    def __AssignImportValues(self, wGlobDict:dict, FileName:str) -> None:
+    def __AssignImportValues(self, wGlobDict: dict, FileName: str) -> None:
         """Weist die importierten Werte dem Arbeitsbereich - nach überprüfung - zu
 
         Args:
@@ -3253,47 +3173,53 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             self.ParamError: if values do not meet the limits
         """
         try:
-            wDict = wGlobDict[self.__Prefix]    # versuche die gewünschten Werte zu erhalten
+            wDict = wGlobDict[self.__Prefix]  # versuche die gewünschten Werte zu erhalten
         except KeyError:
             wDict = {}  # es sind keine Angaben für diesen Prefix in der Datei -> Nichts zu setzen
 
-        for k in self.__WorkDict.keys():        # versuche Daten für all unsere Keys zu bekommen # pylint: disable=consider-iterating-dictionary
+        for (
+            k
+        ) in (
+            self.__WorkDict.keys()
+        ):  # versuche Daten für all unsere Keys zu bekommen # pylint: disable=consider-iterating-dictionary
             IsOk = True
             try:
                 iVal = wDict[k]
             except KeyError:
-                IsOk = False                    # keine Daten für diesen Key
+                IsOk = False  # keine Daten für diesen Key
             if IsOk:
-                NameStr = f'{k} (Imported from {FileName} [{self.__Prefix}])'   # Bezeichnung für ev. Fehlermeldungen
-                if isinstance(iVal,(list, tuple)):      # dind die Daten ein Array?
-                     for iVs in iVal:                   # Löse das Array auf
+                NameStr = f"{k} (Imported from {FileName} [{self.__Prefix}])"  # Bezeichnung für ev. Fehlermeldungen
+                if isinstance(iVal, (list, tuple)):  # dind die Daten ein Array?
+                    for iVs in iVal:  # Löse das Array auf
                         Res = self.__CheckOption(k, NameStr, self.__Definition[k], iVs)
                         if not Res is None:
                             raise self.ParamError(Res) from None
                 else:
                     Res = self.__CheckOption(k, NameStr, self.__Definition[k], iVal)
-                if Res is not None:                     # der übergebene Wert war ungültig
-                        raise self.ParamError(Res) from None
+                if Res is not None:  # der übergebene Wert war ungültig
+                    raise self.ParamError(Res) from None
         for c in self.__Children.values():
-            c.__AssignImportValues(wGlobDict,FileName=FileName) # löse auch für alle Child-Klassen auf # pylint: disable=protected-access
+            c.__AssignImportValues(
+                wGlobDict, FileName=FileName
+            )  # löse auch für alle Child-Klassen auf # pylint: disable=protected-access
 
-    def __GetOptList(self,Name: str) -> str:
+    def __GetOptList(self, Name: str) -> str:
         """Liste der möglichen Commandline-Parameter eines Keys
-        Es werden sowohl alle Kurz- als auch alle Langforman zurückgegeben """
+        Es werden sowohl alle Kurz- als auch alle Langforman zurückgegeben"""
         w = self.__Definition[Name]
         Erg = ""
-        if self.__WorkPars['shortpar'] in w.keys():
-            Short = w[self.__WorkPars['shortpar']]
+        if self.__WorkPars["shortpar"] in w.keys():
+            Short = w[self.__WorkPars["shortpar"]]
             if isinstance(Short, str):
                 for s in Short:
-                    Erg += ('-' + s + ' ')
+                    Erg += "-" + s + " "
             else:
                 for n in Short:
                     for s in n:
-                        Erg += ('-' + s + ' ')
-        if self.__WorkPars['longpar'] in w.keys():
-            Long = w[self.__WorkPars['longpar']]
-            Erg += ('--' + Long + ' ')
+                        Erg += "-" + s + " "
+        if self.__WorkPars["longpar"] in w.keys():
+            Long = w[self.__WorkPars["longpar"]]
+            Erg += "--" + Long + " "
         return Erg
 
     def __CheckOption(self, ParName: str, ParKey: str, wPar: dict, a: str) -> Union[str, None]:
@@ -3311,32 +3237,30 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             None    if no error
             Error-msg   if option is erroneous
         """
-        wMod = wPar[self.__WorkPars['mode']]
-# Prüfen ob Multiple gesetzt ist
+        wMod = wPar[self.__WorkPars["mode"]]
+        # Prüfen ob Multiple gesetzt ist
         try:
-            wMulti = wPar[self.__WorkPars['multiple']]
+            wMulti = wPar[self.__WorkPars["multiple"]]
         except KeyError:
             wMulti = False
-#-------------------------
-# Text
-#-------------------------
-        if wMod == self.__WorkModes['text']:
+        # -------------------------
+        # Text
+        # -------------------------
+        if wMod == self.__WorkModes["text"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             a = str(a)
             try:
-                ll = wPar[self.__WorkPars['lowlimit']]
+                ll = wPar[self.__WorkPars["lowlimit"]]
                 if a < ll:
-                    return self._Translation['LessLow'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'LowLimit':ll})
+                    return self._Translation["LessLow"].format(**{"OptValue": a, "ParKey": ParKey, "LowLimit": ll})
             except KeyError:
                 pass
             try:
-                ul = wPar[self.__WorkPars['uplimit']]
+                ul = wPar[self.__WorkPars["uplimit"]]
                 if a > ul:
-                    return self._Translation['HigherUp'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'Upp':ul})
+                    return self._Translation["HigherUp"].format(**{"OptValue": a, "ParKey": ParKey, "Upp": ul})
             except KeyError:
                 pass
             if wMulti:
@@ -3344,49 +3268,47 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             else:
                 self.__WorkDict[ParName] = a
             return None
-#-------------------------
-# IP
-#-------------------------
+        # -------------------------
+        # IP
+        # -------------------------
         if wMod in self.__IpModes:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
-            
+                    self.__WorkDict[ParName] = []
+
             wIp = self.__IpModes[wMod][0](a)
             if wIp is None:
                 return self._Translation[self.__IpModes[wMod][1]].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'IpVers':self.__IpModes[wMod][2]})
+                    **{"OptValue": a, "ParKey": ParKey, "IpVers": self.__IpModes[wMod][2]}
+                )
             if wMulti:
                 self.__WorkDict[ParName].append(wIp)
             else:
                 self.__WorkDict[ParName] = wIp
             return None
-#-------------------------
-# Integer
-#-------------------------
-        if wMod == self.__WorkModes['int']:
+        # -------------------------
+        # Integer
+        # -------------------------
+        if wMod == self.__WorkModes["int"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             try:
                 n = int(a)
             except ValueError:
-                return self._Translation['NoInt'].format(
-                    **{'OptValue':a, 'ParKey':ParKey})
+                return self._Translation["NoInt"].format(**{"OptValue": a, "ParKey": ParKey})
                 # return f"Value {a} for parameter {ParKey} is not a valid integer"
             try:
-                ll = wPar[self.__WorkPars['lowlimit']]
+                ll = wPar[self.__WorkPars["lowlimit"]]
                 if n < ll:
-                    return self._Translation['LessLow'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'LowLimit':ll})
+                    return self._Translation["LessLow"].format(**{"OptValue": a, "ParKey": ParKey, "LowLimit": ll})
                     # return f"Value {a} for parameter {ParKey} is less than lower limit ({ll})"
             except KeyError:
                 pass
             try:
-                ul = wPar[self.__WorkPars['uplimit']]
+                ul = wPar[self.__WorkPars["uplimit"]]
                 if n > ul:
-                    return self._Translation['HigherUp'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'Upp':ul})
+                    return self._Translation["HigherUp"].format(**{"OptValue": a, "ParKey": ParKey, "Upp": ul})
                     # return f"Value {a} for parameter {ParKey} is bigger than upper limit ({ul})"
             except KeyError:
                 pass
@@ -3395,52 +3317,48 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             else:
                 self.__WorkDict[ParName] = n
             return None
-#-------------------------
-# Count
-#-------------------------
-        if wMod == self.__WorkModes['count']:
-            if a == '':
+        # -------------------------
+        # Count
+        # -------------------------
+        if wMod == self.__WorkModes["count"]:
+            if a == "":
                 return None
             try:
                 n = int(a)
             except ValueError:
-                return self._Translation['NoInt'].format(
-                    **{'OptValue':a, 'ParKey':ParKey})
+                return self._Translation["NoInt"].format(**{"OptValue": a, "ParKey": ParKey})
                 # return f"Value {a} for parameter {ParKey} is not a valid integer"
             if ParName in self.__WorkDict:
-                if ParKey.startswith('--'):
+                if ParKey.startswith("--"):
                     self.__WorkDict[ParName] = n
                 else:
                     self.__WorkDict[ParName] += n
             else:
                 self.__WorkDict[ParName] = n
             return None
-#-------------------------
-# Float
-#-------------------------
-        if wMod == self.__WorkModes['float']:
+        # -------------------------
+        # Float
+        # -------------------------
+        if wMod == self.__WorkModes["float"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             try:
                 n = float(a)
             except ValueError:
-                return self._Translation['NoFloat'].format(
-                    **{'OptValue':a, 'ParKey':ParKey})
+                return self._Translation["NoFloat"].format(**{"OptValue": a, "ParKey": ParKey})
                 # return f"Value {a} for parameter {ParKey} is not a valid floating point"
             try:
-                ll = wPar[self.__WorkPars['lowlimit']]
+                ll = wPar[self.__WorkPars["lowlimit"]]
                 if n < ll:
-                    return self._Translation['LessLow'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'LowLimit':ll})
+                    return self._Translation["LessLow"].format(**{"OptValue": a, "ParKey": ParKey, "LowLimit": ll})
                     # return f"Value {a} for parameter {ParKey} is less than lower limit ({ll})"
             except KeyError:
                 pass
             try:
-                ul = wPar[self.__WorkPars['uplimit']]
+                ul = wPar[self.__WorkPars["uplimit"]]
                 if n > ul:
-                    return self._Translation['HigherUp'].format(
-                        **{'OptValue':a, 'ParKey':ParKey, 'Upp':ul})
+                    return self._Translation["HigherUp"].format(**{"OptValue": a, "ParKey": ParKey, "Upp": ul})
                     # return f"Value {a} for parameter {ParKey} is bigger than upper limit ({ul})"
             except KeyError:
                 pass
@@ -3449,40 +3367,37 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             else:
                 self.__WorkDict[ParName] = n
             return None
-#-------------------------
-# Boolean
-#-------------------------
-        if wMod == self.__WorkModes['bool']:
+        # -------------------------
+        # Boolean
+        # -------------------------
+        if wMod == self.__WorkModes["bool"]:
             try:
                 a = str(a)
             except ValueError:
-                a = 'F'
+                a = "F"
             try:
                 n = a.lower()[0]
             except IndexError:
-                return self._Translation['NoBool'].format(
-                    **{'OptValue':a, 'ParKey':ParKey})
+                return self._Translation["NoBool"].format(**{"OptValue": a, "ParKey": ParKey})
                 # return f"Value {a} for parameter {ParKey} is not valid"
-            if n in 'jyt1':
+            if n in "jyt1":
                 self.__WorkDict[ParName] = True
                 return None
-            if n in 'nf0':
+            if n in "nf0":
                 self.__WorkDict[ParName] = False
                 return None
-            return self._Translation['NoBool'].format(
-                **{'OptValue':a, 'ParKey':ParKey})
+            return self._Translation["NoBool"].format(**{"OptValue": a, "ParKey": ParKey})
             # return f"Value {a} for parameter {ParKey} is not valid"
-#-------------------------
-# File (existing)
-#-------------------------
-        if wMod == self.__WorkModes['file']:
+        # -------------------------
+        # File (existing)
+        # -------------------------
+        if wMod == self.__WorkModes["file"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             a = str(a).strip()
             if len(a) == 0:
-                return self._Translation['PathNoFile'].format(
-                    **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': a})
+                return self._Translation["PathNoFile"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": a})
                 # return f"The name {a} for parameter {ParKey} is not a valid path"
             if a[0] != "/":
                 a = self.__MyPwd + "/" + a
@@ -3490,9 +3405,8 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
             try:
                 n = Path(a).expanduser().resolve()
             except (ValueError, OSError):
-                return self._Translation['PathNoFile'].format(
-                    **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
-                    # return f"The name {a} for parameter {ParKey} is not a valid path"
+                return self._Translation["PathNoFile"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
+                # return f"The name {a} for parameter {ParKey} is not a valid path"
             if n.exists():
                 if n.is_file():
                     if wMulti:
@@ -3501,23 +3415,20 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                         self.__WorkDict[ParName] = str(n)
                     return None
                 else:
-                    return self._Translation['PathNoFile'].format(
-                        **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+                    return self._Translation["PathNoFile"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
                     # return f"The path {a} ({n}) for parameter {ParKey} is not a file"
-            return self._Translation['PathNoFile'].format(
-                **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+            return self._Translation["PathNoFile"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
             # return f"The path {a} ({n}) for parameter {ParKey} does not exist"
-#-------------------------
-# Directory (existing)
-#-------------------------
-        if wMod == self.__WorkModes['dir']:
+        # -------------------------
+        # Directory (existing)
+        # -------------------------
+        if wMod == self.__WorkModes["dir"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             a = str(a).strip()
             if len(a) == 0:
-                return self._Translation['PathNoDir'].format(
-                    **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': a})
+                return self._Translation["PathNoDir"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": a})
                 # return f"The name {a} for parameter {ParKey} is not a valid path"
             if a[0] != "/":
                 a = self.__MyPwd + "/" + a
@@ -3525,8 +3436,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                 try:
                     n = Path(a).expanduser().resolve()
                 except (ValueError, OSError):
-                    return self._Translation['PathNoDir'].format(
-                        **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+                    return self._Translation["PathNoDir"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
                     # return f"The name {a} for parameter {ParKey} is not a valid path"
             else:
                 n = Path(a).expanduser().resolve()
@@ -3538,39 +3448,36 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                         self.__WorkDict[ParName] = str(n)
                     return None
                 else:
-                    return self._Translation['PathNoDir'].format(
-                        **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+                    return self._Translation["PathNoDir"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
                     # return f"The path {a} ({n}) for parameter {ParKey} is not a directory"
-            return self._Translation['PathNoDir'].format(
-                **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+            return self._Translation["PathNoDir"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
             # return f"The path {a} ({n}) for parameter {ParKey} does not exist"
-#-------------------------
-# Path
-#-------------------------
-        if wMod == self.__WorkModes['path']:
+        # -------------------------
+        # Path
+        # -------------------------
+        if wMod == self.__WorkModes["path"]:
             if wMulti:
                 if ParName not in self:
-                   self.__WorkDict[ParName] = []
+                    self.__WorkDict[ParName] = []
             a = str(a).strip()
-            if a != '':
+            if a != "":
                 if a[0] != "/":
                     a = self.__MyPwd + "/" + a
                 n = a
                 try:
                     n = Path(a).expanduser().resolve()
                 except (ValueError, OSError):
-                    return self._Translation['PathNoPath'].format(
-                        **{'OptionPath':a, 'OptionName':ParKey, 'FullPath': n})
+                    return self._Translation["PathNoPath"].format(**{"OptionPath": a, "OptionName": ParKey, "FullPath": n})
                     # return f"The name {a} for parameter {ParKey} is not a valid path"
             else:
-                n = ''
+                n = ""
             if wMulti:
                 self.__WorkDict[ParName].append(str(n))
             else:
                 self.__WorkDict[ParName] = str(n)
         return None
 
-    def __Intersection(self, List1:list, List2:list) -> list:
+    def __Intersection(self, List1: list, List2: list) -> list:
         if len(List2) > len(List1):
             List1, List2 = List2, List1
         return [value for value in List1 if value in List2]
@@ -3590,7 +3497,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 
     @property
     def UnusedArgs(self) -> list:
-        """ Return list of not defined args from the commandline
+        """Return list of not defined args from the commandline
         This list is for the current Param-object and all of the children
         of this Param-object.
         So under normal conditions it makes only sense on the root of
@@ -3656,7 +3563,7 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 
         for c in self.__Children.values():
             e = c.GetExportDict
-            for n,d in e.items():
+            for n, d in e.items():
                 Erg[n] = d
         return Erg
 
@@ -3669,14 +3576,16 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         """
         return self.__Prefix
 
-    def ParamStr(self,
-                 indent: int = 4,
-                 header: bool = True,
-                 allvalues: bool = True,
-                 dotted: bool = False,
-                 cmdpar: bool = True,
-                 parentopts: bool = False,
-                 recursive: bool = True) -> str:
+    def ParamStr(
+        self,
+        indent: int = 4,
+        header: bool = True,
+        allvalues: bool = True,
+        dotted: bool = False,
+        cmdpar: bool = True,
+        parentopts: bool = False,
+        recursive: bool = True,
+    ) -> str:
         """
         Returns a string with formatted output of the
         processed parameters.
@@ -3778,26 +3687,30 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
 
 
         """
-        return self.__ParamStr(depth = 0,
-                               indent = indent,
-                               header = header,
-                               allvalues = allvalues,
-                               dotted = dotted,
-                               dottedbase = '',
-                               cmdpar = cmdpar,
-                               parentopts = parentopts,
-                               recursive = recursive)
+        return self.__ParamStr(
+            depth=0,
+            indent=indent,
+            header=header,
+            allvalues=allvalues,
+            dotted=dotted,
+            dottedbase="",
+            cmdpar=cmdpar,
+            parentopts=parentopts,
+            recursive=recursive,
+        )
 
-    def __ParamStr(self,
-                 depth: int = 0,
-                 indent: int = 4,
-                 header: bool = True,
-                 allvalues: bool = True,
-                 dotted: bool = False,
-                 dottedbase:str = '',
-                 cmdpar: bool = True,
-                 parentopts: bool = False,
-                 recursive: bool = True) -> str:
+    def __ParamStr(
+        self,
+        depth: int = 0,
+        indent: int = 4,
+        header: bool = True,
+        allvalues: bool = True,
+        dotted: bool = False,
+        dottedbase: str = "",
+        cmdpar: bool = True,
+        parentopts: bool = False,
+        recursive: bool = True,
+    ) -> str:
         """
         This is the internal procedure. Look at "ParamStr" for all the args
         depth and dottedbase are only used internaly so the user can't set them to the exported function
@@ -3826,48 +3739,50 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
         :return: The formated string of the processed parameters
         :rtype: str
         """
-        Erg = ''
-        Ls = ' ' * (depth * indent)
+        Erg = ""
+        Ls = " " * (depth * indent)
         p = self.Prefix
         if dotted:
-            if dottedbase != '':
-                p = dottedbase + '.' + p
+            if dottedbase != "":
+                p = dottedbase + "." + p
         if header:
             Erg += f"{Ls}{'-' * 60}\n{Ls}{p}\n{Ls}{'-' * 60}\n"
         TheItems = self.items()
-        for key,value in TheItems:
+        for key, value in TheItems:
             if allvalues or self.IsOwnKey(key):
                 if cmdpar:
-                    OptStr = self.GetCmdPar(Entry = key, dotted = dotted, parents = parentopts)
+                    OptStr = self.GetCmdPar(Entry=key, dotted=dotted, parents=parentopts)
                 else:
-                    OptStr = ''
-                if OptStr != '':
-                    OptStr = '(' + OptStr + ')'
+                    OptStr = ""
+                if OptStr != "":
+                    OptStr = "(" + OptStr + ")"
                 if isinstance(value, str):
                     Erg += f"{Ls}{p}\t-> {key}\t{OptStr}\t: '{value}'\n"
                 else:
                     Erg += f"{Ls}{p}\t-> {key}\t{OptStr}\t: {value}\n"
         if recursive:
             for n in self.Child.values():
-                Erg += n.__ParamStr(depth = depth + 1,                  # pylint: disable=protected-access
-                                  indent = indent,
-                                  header = header,
-                                  allvalues = allvalues,
-                                  dotted = dotted,
-                                  dottedbase = p,
-                                  cmdpar = cmdpar,
-                                  parentopts = parentopts,
-                                  recursive = recursive)
-        if depth == 0:           # Auf der höchsten Ebene
-            l = [0,0,0]
+                Erg += n.__ParamStr(
+                    depth=depth + 1,  # pylint: disable=protected-access
+                    indent=indent,
+                    header=header,
+                    allvalues=allvalues,
+                    dotted=dotted,
+                    dottedbase=p,
+                    cmdpar=cmdpar,
+                    parentopts=parentopts,
+                    recursive=recursive,
+                )
+        if depth == 0:  # Auf der höchsten Ebene
+            l = [0, 0, 0]
             lList = []
             Lines = Erg.splitlines()
             for Line in Lines:
-                if '\t' not in Line:
+                if "\t" not in Line:
                     lList.append(Line)
                 else:
-                    w = Line.split('\t')
-                    lList.append(w)             # gesplittete zeile anhängen
+                    w = Line.split("\t")
+                    lList.append(w)  # gesplittete zeile anhängen
                     for i in range(3):
                         try:
                             ll = len(w[i])
@@ -3875,28 +3790,28 @@ if you use nested childs. (Check out the :doc:`usage` section for further inform
                                 l[i] = ll
                         except KeyError:
                             pass
-            Erg = ''
-            Pad = ' ' * (max(l) + 1)
+            Erg = ""
+            Pad = " " * (max(l) + 1)
             for Line in lList:
                 if isinstance(Line, str):
-                    Erg += Line + '\n'
+                    Erg += Line + "\n"
                 else:
-                    wErg = ''
+                    wErg = ""
                     for i in range(3):
-                        wErg += (Line[i] + Pad)[:l[i] + 1]
-                    Erg += wErg + Line[3] + '\n'
+                        wErg += (Line[i] + Pad)[: l[i] + 1]
+                    Erg += wErg + Line[3] + "\n"
         return Erg
 
-    def __UsedShortCommandLineParameter(self, Par, WorkList:list) -> None:
+    def __UsedShortCommandLineParameter(self, Par, WorkList: list) -> None:
         List = Par.ShortOptsList
         for l in List:
-            if l[-1] == ':':
+            if l[-1] == ":":
                 l = l[:-1]
-            m = '-' + l
+            m = "-" + l
             if m not in WorkList:
                 WorkList.append(m)
         for c in Par.Child.values():
-            self.__UsedShortCommandLineParameter(c,WorkList)
+            self.__UsedShortCommandLineParameter(c, WorkList)
 
     @property
     def OverviewCommandLineParameter(self) -> str:
@@ -3928,9 +3843,9 @@ Used long options:
         if not self.__IsPrepared:
             self.__Prepare()
         WorkList = []
-        self.__UsedShortCommandLineParameter(self,WorkList)
+        self.__UsedShortCommandLineParameter(self, WorkList)
         WorkList.sort()
-        return '    ' + '\n    '.join(textwrap.wrap(', '.join(WorkList), 64, break_long_words=False))
+        return "    " + "\n    ".join(textwrap.wrap(", ".join(WorkList), 64, break_long_words=False))
 
     @property
     def FreeShortCommandLineParameter(self) -> str:
@@ -3944,11 +3859,10 @@ Used long options:
         UsedList = []
         self.__UsedShortCommandLineParameter(self, UsedList)
         FreeList = []
-        for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyt0123456789':
-            if '-' + c not in UsedList:
-                FreeList.append('-' + c)
-        return '    ' + '\n    '.join(textwrap.wrap(', '.join(FreeList), 64, break_long_words=False))
-
+        for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyt0123456789":
+            if "-" + c not in UsedList:
+                FreeList.append("-" + c)
+        return "    " + "\n    ".join(textwrap.wrap(", ".join(FreeList), 64, break_long_words=False))
 
     @property
     def UsedLongCommandLineParameter(self) -> str:
@@ -3962,23 +3876,21 @@ Used long options:
         if not self.__IsPrepared:
             self.__Prepare()
         WorkList = []
-        def __UsedLongCommandLineParameter(Par:Param, WorkList:list) -> None:
+
+        def __UsedLongCommandLineParameter(Par: Param, WorkList: list) -> None:
             List = Par.LongOptsList
             for l in List:
-                if l[-1] == '=':
+                if l[-1] == "=":
                     l = l[:-1]
-                m = '--' + l
+                m = "--" + l
                 if m not in WorkList:
                     WorkList.append(m)
             for c in Par.Child.values():
-                __UsedLongCommandLineParameter(c,WorkList)
+                __UsedLongCommandLineParameter(c, WorkList)
 
-        __UsedLongCommandLineParameter(self,WorkList)
+        __UsedLongCommandLineParameter(self, WorkList)
         WorkList.sort()
-        return '    ' + '\n    '.join(textwrap.wrap(', '.join(WorkList), 64, break_long_words=False))
-
-
-
+        return "    " + "\n    ".join(textwrap.wrap(", ".join(WorkList), 64, break_long_words=False))
 
     @property
     def TestCommandLineParameter(self) -> str:
@@ -3997,46 +3909,47 @@ Used long options:
 
         Sd = {}
         Ld = {}
-        def __AddLists(Par:Param,Sd:dict,Ld:dict) -> None:
+
+        def __AddLists(Par: Param, Sd: dict, Ld: dict) -> None:
             Sd[Par.FullPrefix] = Par.ShortOptsList
             Ld[Par.FullPrefix] = Par.LongOptsList
             for c in Par.Child.values():
-                __AddLists(c,Sd,Ld)
+                __AddLists(c, Sd, Ld)
 
-        __AddLists(self,Sd,Ld)
+        __AddLists(self, Sd, Ld)
 
         # pprint.pprint(Sd,indent=4,sort_dicts=True)
         # pprint.pprint(Ld,indent=4,sort_dicts=True)
 
         Sod = {}
-        for p,ll in Sd.items():
+        for p, ll in Sd.items():
             for l in ll:
-                if l[-1] == ':':
+                if l[-1] == ":":
                     HasArg = True
                     l = l[:-1]
                 else:
                     HasArg = False
                 if l not in Sod:
                     Sod[l] = []
-                Sod[l].append([p,HasArg])
+                Sod[l].append([p, HasArg])
         Lod = {}
-        for p,ll in Ld.items():
+        for p, ll in Ld.items():
             for l in ll:
-                if l[-1] == '=':
+                if l[-1] == "=":
                     HasArg = True
                     l = l[:-1]
                 else:
                     HasArg = False
                 if l not in Lod:
                     Lod[l] = []
-                Lod[l].append([p,HasArg])
+                Lod[l].append([p, HasArg])
         # pprint.pprint(Sod,indent=4,sort_dicts=True)
         # pprint.pprint(Lod,indent=4,sort_dicts=True)
         HasErrors = False
         HasDanger = False
         HasErrorsList = []
         HasDangerList = []
-        Res = ''
+        Res = ""
         for Opt, List in Sod.items():
             if len(List) > 1:
                 UsedList = []
@@ -4052,8 +3965,8 @@ Used long options:
                     Res += f"'-{Opt}':\n    Error:   Inconsisten use of required argument in\n        {', '.join(UsedList)}\n"
                 else:
                     Res += f"'-{Opt}':\n    Warning: Possibly unintended double use in\n        {', '.join(UsedList)}\n"
-        if Res != '':
-            Res += '\n'
+        if Res != "":
+            Res += "\n"
         for Opt, List in Lod.items():
             if len(List) > 1:
                 UsedList = []
@@ -4070,22 +3983,22 @@ Used long options:
                 else:
                     Res += f"'--{Opt}':\n    Warning: Possibly unintended double use in\n        {', '.join(UsedList)}\n"
         if HasDanger or HasErrors:
-            Res += '\n' + '-' * 60 + '\n'
+            Res += "\n" + "-" * 60 + "\n"
             if HasErrors:
                 Res += f"There are errors in options {', '.join(HasErrorsList)}\n"
             if HasDanger:
                 Res += f"There are dangerous settings in options {', '.join(HasDangerList)}\n"
-            Res += '-' * 60 + '\n'
+            Res += "-" * 60 + "\n"
 
         return Res
 
-
-
     class GetoptError(Exception):
         """Own error-class for option-errors"""
-        opt = ''
-        msg = ''
-        def __init__(self, msg, opt=''):
+
+        opt = ""
+        msg = ""
+
+        def __init__(self, msg, opt=""):
             self.msg = msg
             self.opt = opt
             Exception.__init__(self, msg, opt)
@@ -4093,7 +4006,7 @@ Used long options:
         def __str__(self):
             return self.msg
 
-    def _getopt(self, args, shortopts, longopts = [], AcceptAll = False):                 # pylint: disable=dangerous-default-value
+    def _getopt(self, args, shortopts, longopts=[], AcceptAll=False):  # pylint: disable=dangerous-default-value
         """getopt(args, options[, long_options]) -> opts, args
 
         Parses command line options and parameter list.  args is the
@@ -4125,18 +4038,18 @@ Used long options:
             longopts = [longopts]
         else:
             longopts = list(longopts)
-        while args and args[0].startswith('-') and args[0] != '-':
-            if args[0] == '--':
+        while args and args[0].startswith("-") and args[0] != "-":
+            if args[0] == "--":
                 args = args[1:]
                 break
-            if args[0].startswith('--'):
-                opts, args, unused = self._do_longs(opts, args[0][2:], longopts, args[1:],unused,AcceptAll)
+            if args[0].startswith("--"):
+                opts, args, unused = self._do_longs(opts, args[0][2:], longopts, args[1:], unused, AcceptAll)
             else:
-                opts, args, unused = self._do_shorts(opts, args[0][1:], shortopts, args[1:],unused,AcceptAll)
+                opts, args, unused = self._do_shorts(opts, args[0][1:], shortopts, args[1:], unused, AcceptAll)
 
         return opts, args, unused
 
-    def _gnu_getopt(self, args, shortopts, longopts = [], AcceptAll = False):                 # pylint: disable=dangerous-default-value
+    def _gnu_getopt(self, args, shortopts, longopts=[], AcceptAll=False):  # pylint: disable=dangerous-default-value
         """getopt(args, options[, long_options]) -> opts, args
 
         This function works like getopt(), except that GNU style scanning
@@ -4159,7 +4072,7 @@ Used long options:
             longopts = list(longopts)
 
         # Allow options after non-option arguments?
-        if shortopts.startswith('+'):
+        if shortopts.startswith("+"):
             shortopts = shortopts[1:]
             all_options_first = True
         elif os.environ.get("POSIXLY_CORRECT"):
@@ -4168,13 +4081,13 @@ Used long options:
             all_options_first = False
 
         while args:
-            if args[0] == '--':
+            if args[0] == "--":
                 prog_args += args[1:]
                 break
 
-            if args[0][:2] == '--':
+            if args[0][:2] == "--":
                 opts, args, unused = self._do_longs(opts, args[0][2:], longopts, args[1:], unused, AcceptAll)
-            elif args[0][:1] == '-' and args[0] != '-':
+            elif args[0][:1] == "-" and args[0] != "-":
                 opts, args, unused = self._do_shorts(opts, args[0][1:], shortopts, args[1:], unused, AcceptAll)
             else:
                 if all_options_first:
@@ -4186,32 +4099,32 @@ Used long options:
 
         return opts, prog_args, unused
 
-    def _do_longs(self, opts, opt, longopts, args, unused, AcceptAll = False):
+    def _do_longs(self, opts, opt, longopts, args, unused, AcceptAll=False):
         """
         Process long options
         """
         try:
-            i = opt.index('=')
+            i = opt.index("=")
         except ValueError:
             optarg = None
         else:
-            opt, optarg = opt[:i], opt[i+1:]
+            opt, optarg = opt[:i], opt[i + 1 :]
         if AcceptAll:
             try:
                 has_arg, opt = self._long_has_args(opt, longopts)
             except self.GetoptError:
-                unused.append('--' + opt)
+                unused.append("--" + opt)
                 return opts, args, unused
         else:
             has_arg, opt = self._long_has_args(opt, longopts)
         if has_arg:
             if optarg is None:
                 if not args:
-                    raise self.GetoptError(self._Translation['OptionRequiresArgumentLong'].format(**{'opt':opt}),opt)
+                    raise self.GetoptError(self._Translation["OptionRequiresArgumentLong"].format(**{"opt": opt}), opt)
                 optarg, args = args[0], args[1:]
         elif optarg is not None:
-            raise self.GetoptError(self._Translation['OptionNeedNoArgs'].format(**{'opt':opt}), opt)
-        opts.append(('--' + opt, optarg or ''))
+            raise self.GetoptError(self._Translation["OptionNeedNoArgs"].format(**{"opt": opt}), opt)
+        opts.append(("--" + opt, optarg or ""))
         return opts, args, unused
 
     # Return:
@@ -4223,58 +4136,57 @@ Used long options:
         """
         possibilities = [o for o in longopts if o.startswith(opt)]
         if not possibilities:
-            raise self.GetoptError(self._Translation['OptionNotRecognizedLong'].format(**{'opt':opt}), opt)
+            raise self.GetoptError(self._Translation["OptionNotRecognizedLong"].format(**{"opt": opt}), opt)
         # Is there an exact match?
         if opt in possibilities:
             return False, opt
-        elif opt + '=' in possibilities:
+        elif opt + "=" in possibilities:
             return True, opt
         # No exact match, so better be unique.
         if len(possibilities) > 1:
             # since possibilities contains all valid continuations, might be
             # nice to work them into the error msg
-            raise self.GetoptError(self._Translation['ParNoUniquePrefix'].format(**{'opt':opt}), opt)
+            raise self.GetoptError(self._Translation["ParNoUniquePrefix"].format(**{"opt": opt}), opt)
         assert len(possibilities) == 1
         unique_match = possibilities[0]
-        has_arg = unique_match.endswith('=')
+        has_arg = unique_match.endswith("=")
         if has_arg:
             unique_match = unique_match[:-1]
         return has_arg, unique_match
 
-    def _do_shorts(self, opts, optstring, shortopts, args, unused, AcceptAll = False):
+    def _do_shorts(self, opts, optstring, shortopts, args, unused, AcceptAll=False):
         """
         Process short options
         """
-        while optstring != '':
+        while optstring != "":
             opt, optstring = optstring[0], optstring[1:]
             if AcceptAll:
                 try:
                     wHasArgs = self._short_has_arg(opt, shortopts)
                 except self.GetoptError:
-                    unused.append('-' + opt)
+                    unused.append("-" + opt)
                     wHasArgs = False
             else:
                 wHasArgs = self._short_has_arg(opt, shortopts)
             if wHasArgs:
-                if optstring == '':
+                if optstring == "":
                     if not args:
-                        raise self.GetoptError(self._Translation['OptionRequiresArgumentShort'].format(**{'opt':opt}), opt)
+                        raise self.GetoptError(self._Translation["OptionRequiresArgumentShort"].format(**{"opt": opt}), opt)
                     optstring, args = args[0], args[1:]
-                optarg, optstring = optstring, ''
+                optarg, optstring = optstring, ""
             else:
-                optarg = ''
-            opts.append(('-' + opt, optarg))
+                optarg = ""
+            opts.append(("-" + opt, optarg))
         return opts, args, unused
 
     def _short_has_arg(self, opt, shortopts):
         """
         Determine if short option has args
         """
-        for i in range(len(shortopts)):                         # pylint: disable=consider-using-enumerate
-            if opt == shortopts[i] != ':':
-                return shortopts.startswith(':', i+1)
-        raise self.GetoptError(self._Translation['OptionNotRecognizedShort'].format(**{'opt':opt}), opt)
-
+        for i in range(len(shortopts)):  # pylint: disable=consider-using-enumerate
+            if opt == shortopts[i] != ":":
+                return shortopts.startswith(":", i + 1)
+        raise self.GetoptError(self._Translation["OptionNotRecognizedShort"].format(**{"opt": opt}), opt)
 
 
 # if __name__ == '__main__':
@@ -4409,7 +4321,6 @@ Used long options:
 # #                 },
 
 #         }
-
 
 
 #     TestDef_Alpha =     {
@@ -4635,7 +4546,6 @@ Used long options:
 #         print(f"\n{'-' * 80}\n\n")
 #         print(m.Usage())
 #         print(f"\n{'#' * 80}\n\n")
-
 
 
 #         a = Param(Def = TestDef_Alpha,

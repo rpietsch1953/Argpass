@@ -8,7 +8,7 @@
 
 <div class="version">
 
-1.14.305.221230100435
+1.15.319.230127164917
 
 </div>
 
@@ -35,7 +35,7 @@
 <div role="navigation" aria-label="Page navigation">
 
   - [](#) »
-  - pcs\_argpass 1.14 documentation
+  - pcs\_argpass 1.15 documentation
   - 
 
 -----
@@ -50,7 +50,7 @@
 
 # Welcome to pcs\_argpass’s documentation\!
 
-Document version: 1.14.305.221230100435
+Document version: 1.15.319.230127164917
 
 <div class="admonition note">
 
@@ -260,6 +260,10 @@ Public License for more details.
     </span><span class="n"><span class="pre">bool</span></span><span class="w">
     </span><span class="o"><span class="pre">=</span></span><span class="w">
     </span><span class="default_value"><span class="pre">True</span></span>*,
+    *<span class="n"><span class="pre">ShowConfigName</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+    </span><span class="n"><span class="pre">bool</span></span><span class="w">
+    </span><span class="o"><span class="pre">=</span></span><span class="w">
+    </span><span class="default_value"><span class="pre">False</span></span>*,
     *<span class="n"><span class="pre">\_Child</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span>*<span class="sig-paren">)</span>  
     Main class and also the result-dictionary. A member of this class
     acts like a dictionary. There are some special cases if you use
@@ -1464,6 +1468,10 @@ Public License for more details.
         </span><span class="n"><span class="pre">bool</span></span><span class="w">
         </span><span class="o"><span class="pre">=</span></span><span class="w">
         </span><span class="default_value"><span class="pre">True</span></span>*,
+        *<span class="n"><span class="pre">ShowConfigName</span></span><span class="p"><span class="pre">:</span></span><span class="w">
+        </span><span class="n"><span class="pre">bool</span></span><span class="w">
+        </span><span class="o"><span class="pre">=</span></span><span class="w">
+        </span><span class="default_value"><span class="pre">False</span></span>*,
         *<span class="n"><span class="pre">\_Child</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span>*<span class="sig-paren">)</span>  
         This is the constructor of the Param-class.
         
@@ -1666,11 +1674,11 @@ Public License for more details.
                 </div>
         
         is printed within the help-output to divide child help from each
-        other
-        
-          - Parameters  
-            **\_Child** (*bool,* *optional*) – True if this instance
-            should be a child, defaults to False
+        other defaults to True :type ShowPrefixOnHelp: bool, optional
+        :param ShowConfigName: Anzeige des Parameters innerhalb der
+        Config-Datei, defaults to False :type ShowConfigName: bool,
+        optional :param \_Child: True if this instance should be a
+        child, defaults to False :type \_Child: bool, optional
         
         <div class="admonition note">
         
