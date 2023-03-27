@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3Ut_Default
 # vim: expandtab:ts=4:sw=4:noai
 """
 Deals with command-line parameters
@@ -48,7 +48,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = "319.230127164917"
+__updated__ = "332.230327113516"
 Version = f"1.15.{__updated__}"
 
 GLOBAL_NAME = "global"
@@ -1383,6 +1383,7 @@ class Param:
 
         self.__WorkModes = {
             "text": "t",
+            "pwd": "pwd",
             "bool": "b",
             "path": "p",
             "file": "f",
@@ -1999,8 +2000,8 @@ class Param:
         """
         return self.__Children
 
-    def AddChild(
-        self,  # pylint: disable=dangerous-default-value,redefined-outer-name
+    def AddChild(  # pylint: disable=dangerous-default-value,redefined-outer-name
+        self,
         Prefix: str,
         Def: dict = {},
         Description: str = "",
@@ -2262,6 +2263,31 @@ class Param:
                 if self.__Parent is not None:
                     Erg = self.__Parent.GetCmdPar(Entry=Entry, dotted=dotted, parents=parents)
         return Erg
+
+    def _IsPwd(self, Entry: str, parents: bool = False) -> bool:
+        """
+        Return the commandline-options for one entry
+
+        :param Entry: The entry we are looking for
+        :type Entry: str
+        :param parents: show also options from parents, defaults to False
+        :type parents: bool, optional
+        :return: True if Option is a password
+        :rtype: bool
+        """
+        try:
+            SingleDef = self.__Definition[Entry]
+        except KeyError:
+            if parents:
+                if self.__Parent is None:
+                    return False
+                return self.__Parent._IsPwd(Entry=Entry, parents=parents)
+            return False
+        try:
+            return self.__WorkModes["pwd"] == SingleDef[self.__WorkPars["mode"]]
+        except KeyError:
+            return False
+        return False
 
     def SetUserKeys(self, UserPars: Optional[dict] = None, UserModes: Optional[dict] = None) -> None:
         """
@@ -2746,12 +2772,15 @@ class Param:
                         self.__WorkDict[ParName] = str(wFile)
                     else:
                         self.__WorkDict[ParName] = ""
-                Ut_Default = SingleDef[self.__WorkPars["default"]]
+                if ParMode != self.__WorkModes["pwd"]:
+                    Ut_Default = SingleDef[self.__WorkPars["default"]]
+                else:
+                    Ut_Default = "********"
             else:
                 if self.__AllParams:
                     if ParMode == self.__WorkModes["bool"]:
                         self.__WorkDict[ParName] = False
-                    elif ParMode == self.__WorkModes["text"]:
+                    elif ParMode == self.__WorkModes["text"] or ParMode == self.__WorkModes["pwd"]:
                         if ParMulti:
                             self.__WorkDict[ParName] = []
                         else:
@@ -2980,7 +3009,7 @@ class Param:
                 if "=" in xPar:
                     xPar = xPar.split("=", 1)[0]
                 if "." in xPar:
-                    xPre = wPar[2:].split(".")[0]
+                    xPre = wPar[2:].split(".", 1)[0]
                     if xPre not in PreList:
                         PreList.append(xPre)
         wLongList = []
@@ -3199,9 +3228,9 @@ class Param:
                 if Res is not None:  # der übergebene Wert war ungültig
                     raise self.ParamError(Res) from None
         for c in self.__Children.values():
-            c.__AssignImportValues(
+            c.__AssignImportValues(  # pylint: disable=protected-access
                 wGlobDict, FileName=FileName
-            )  # löse auch für alle Child-Klassen auf # pylint: disable=protected-access
+            )  # löse auch für alle Child-Klassen auf
 
     def __GetOptList(self, Name: str) -> str:
         """Liste der möglichen Commandline-Parameter eines Keys
@@ -3246,7 +3275,7 @@ class Param:
         # -------------------------
         # Text
         # -------------------------
-        if wMod == self.__WorkModes["text"]:
+        if wMod == self.__WorkModes["text"] or wMod == self.__WorkModes["pwd"]:
             if wMulti:
                 if ParName not in self:
                     self.__WorkDict[ParName] = []
@@ -3749,6 +3778,8 @@ class Param:
             Erg += f"{Ls}{'-' * 60}\n{Ls}{p}\n{Ls}{'-' * 60}\n"
         TheItems = self.items()
         for key, value in TheItems:
+            if self._IsPwd(Entry=key, parents=parentopts):
+                value = "********"
             if allvalues or self.IsOwnKey(key):
                 if cmdpar:
                     OptStr = self.GetCmdPar(Entry=key, dotted=dotted, parents=parentopts)
@@ -3762,8 +3793,8 @@ class Param:
                     Erg += f"{Ls}{p}\t-> {key}\t{OptStr}\t: {value}\n"
         if recursive:
             for n in self.Child.values():
-                Erg += n.__ParamStr(
-                    depth=depth + 1,  # pylint: disable=protected-access
+                Erg += n.__ParamStr(  # pylint: disable=protected-access
+                    depth=depth + 1,
                     indent=indent,
                     header=header,
                     allvalues=allvalues,
