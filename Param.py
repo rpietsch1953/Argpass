@@ -48,7 +48,7 @@ except ModuleNotFoundError:
     JsonLoads = json.loads
     JsonLoad = json.load
 
-__updated__ = "332.230327113516"
+__updated__ = "339.230404114747"
 Version = f"1.15.{__updated__}"
 
 GLOBAL_NAME = "global"
@@ -1125,7 +1125,6 @@ class Param:
         ShowConfigName: bool = False,
         _Child=False,
     ):
-
         """
         This is the constructor of the Param-class.
 
@@ -2533,7 +2532,6 @@ class Param:
             if Ut_Default is None:
                 Ut_Default = LimitText
             else:
-
                 if isinstance(Ut_Default, str):
                     d = "'" + Ut_Default + "'"
                 else:
@@ -2959,6 +2957,7 @@ class Param:
         :return: True if a terminal function is requested. e.g this are "Help", all "License" and all "Export" options
         :rtype: bool
         """
+        self.__ClearWorkDict()
         Erg = self.__Process(True)
         if Erg:
             return Erg
@@ -2972,6 +2971,12 @@ class Param:
                 else:
                     raise self.ParamError(self._Translation["UndefinedOptionSingle"].format(**{"OptStr": OptStr})) from None
         return Erg
+
+    def __ClearWorkDict(self) -> None:
+        """Lösche das Work-Dictionary"""
+        self.__WorkDict = {}
+        for c in self.__Children.values():
+            c.__ClearWorkDict()
 
     def __Process(self, IsFirst: bool) -> bool:
         """
@@ -3047,7 +3052,6 @@ class Param:
                 if OptionName in self.__FullLicenseList:
                     print("\n".join(self.__License))
                     return True
-
             # GLOBAL IMPORT
             for OptionName, OptionPath in opts:
                 OptionName = self.__Make_OptName(OptionName)
@@ -3206,9 +3210,7 @@ class Param:
         except KeyError:
             wDict = {}  # es sind keine Angaben für diesen Prefix in der Datei -> Nichts zu setzen
 
-        for (
-            k
-        ) in (
+        for k in list(
             self.__WorkDict.keys()
         ):  # versuche Daten für all unsere Keys zu bekommen # pylint: disable=consider-iterating-dictionary
             IsOk = True
@@ -3219,6 +3221,7 @@ class Param:
             if IsOk:
                 NameStr = f"{k} (Imported from {FileName} [{self.__Prefix}])"  # Bezeichnung für ev. Fehlermeldungen
                 if isinstance(iVal, (list, tuple)):  # dind die Daten ein Array?
+                    self.__WorkDict[k] = []
                     for iVs in iVal:  # Löse das Array auf
                         Res = self.__CheckOption(k, NameStr, self.__Definition[k], iVs)
                         if not Res is None:
